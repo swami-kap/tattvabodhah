@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GKVS - Veda Classes</title>
+	<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+	<script type="text/JavaScript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
+  <meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.select/2.0.0-beta1/css/bootstrap-select.min.css">
+	<script type="text/JavaScript" src="https://cdn.jsdelivr.net/bootstrap.select/2.0.0-beta1/js/bootstrap-select.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+    <script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js" ></script>
+   
+	<script type="text/javascript">
+/*!
+ * Validator v0.8.1 for Bootstrap 3, by @1000hz
+ * Copyright 2015 Cina Saffary
+ * Licensed under http://opensource.org/licenses/MIT
+ *
+ * https://github.com/1000hz/bootstrap-validator
+ */
+
++function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=a.extend({},d.DEFAULTS,c.data(),"object"==typeof b&&b),f=c.data("bs.validator");(f||"destroy"!=b)&&(f||c.data("bs.validator",f=new d(this,e)),"string"==typeof b&&f[b]())})}var c=':input:not([type="submit"], button):enabled:visible',d=function(b,c){this.$element=a(b),this.options=c,c.errors=a.extend({},d.DEFAULTS.errors,c.errors);for(var e in c.custom)if(!c.errors[e])throw new Error("Missing default error message for custom validator: "+e);a.extend(d.VALIDATORS,c.custom),this.$element.attr("novalidate",!0),this.toggleSubmit(),this.$element.on("input.bs.validator change.bs.validator focusout.bs.validator",a.proxy(this.validateInput,this)),this.$element.on("submit.bs.validator",a.proxy(this.onSubmit,this)),this.$element.find("[data-match]").each(function(){var b=a(this),c=b.data("match");a(c).on("input.bs.validator",function(){b.val()&&b.trigger("input.bs.validator")})})};d.DEFAULTS={delay:500,html:!1,disable:!0,custom:{},errors:{match:"Does not match",minlength:"Not long enough"}},d.VALIDATORS={"native":function(a){var b=a[0];return b.checkValidity?b.checkValidity():!0},match:function(b){var c=b.data("match");return!b.val()||b.val()===a(c).val()},minlength:function(a){var b=a.data("minlength");return!a.val()||a.val().length>=b}},d.prototype.validateInput=function(b){var c=a(b.target),d=c.data("bs.validator.errors");if(c.is('[type="radio"]')&&(c=this.$element.find('input[name="'+c.attr("name")+'"]')),this.$element.trigger(b=a.Event("validate.bs.validator",{relatedTarget:c[0]})),!b.isDefaultPrevented()){var e=this;this.runValidators(c).done(function(f){c.data("bs.validator.errors",f),f.length?e.showErrors(c):e.clearErrors(c),d&&f.toString()===d.toString()||(b=f.length?a.Event("invalid.bs.validator",{relatedTarget:c[0],detail:f}):a.Event("valid.bs.validator",{relatedTarget:c[0],detail:d}),e.$element.trigger(b)),e.toggleSubmit(),e.$element.trigger(a.Event("validated.bs.validator",{relatedTarget:c[0]}))})}},d.prototype.runValidators=function(b){function c(a){return b.data(a+"-error")||b.data("error")||"native"==a&&b[0].validationMessage||g.errors[a]}var e=[],f=a.Deferred(),g=this.options;return b.data("bs.validator.deferred")&&b.data("bs.validator.deferred").reject(),b.data("bs.validator.deferred",f),a.each(d.VALIDATORS,a.proxy(function(a,d){if((b.data(a)||"native"==a)&&!d.call(this,b)){var f=c(a);!~e.indexOf(f)&&e.push(f)}},this)),!e.length&&b.val()&&b.data("remote")?this.defer(b,function(){var d={};d[b.attr("name")]=b.val(),a.get(b.data("remote"),d).fail(function(a,b,d){e.push(c("remote")||d)}).always(function(){f.resolve(e)})}):f.resolve(e),f.promise()},d.prototype.validate=function(){var a=this.options.delay;return this.options.delay=0,this.$element.find(c).trigger("input.bs.validator"),this.options.delay=a,this},d.prototype.showErrors=function(b){var c=this.options.html?"html":"text";this.defer(b,function(){var d=b.closest(".form-group"),e=d.find(".help-block.with-errors"),f=d.find(".form-control-feedback"),g=b.data("bs.validator.errors");g.length&&(g=a("<ul/>").addClass("list-unstyled").append(a.map(g,function(b){return a("<li/>")[c](b)})),void 0===e.data("bs.validator.originalContent")&&e.data("bs.validator.originalContent",e.html()),e.empty().append(g),d.addClass("has-error"),f.length&&f.removeClass("glyphicon-ok")&&f.addClass("glyphicon-warning-sign")&&d.removeClass("has-success"))})},d.prototype.clearErrors=function(a){var b=a.closest(".form-group"),c=b.find(".help-block.with-errors"),d=b.find(".form-control-feedback");c.html(c.data("bs.validator.originalContent")),b.removeClass("has-error"),d.length&&d.removeClass("glyphicon-warning-sign")&&d.addClass("glyphicon-ok")&&b.addClass("has-success")},d.prototype.hasErrors=function(){function b(){return!!(a(this).data("bs.validator.errors")||[]).length}return!!this.$element.find(c).filter(b).length},d.prototype.isIncomplete=function(){function b(){return"checkbox"===this.type?!this.checked:"radio"===this.type?!a('[name="'+this.name+'"]:checked').length:""===a.trim(this.value)}return!!this.$element.find(c).filter("[required]").filter(b).length},d.prototype.onSubmit=function(a){this.validate(),(this.isIncomplete()||this.hasErrors())&&a.preventDefault()},d.prototype.toggleSubmit=function(){if(this.options.disable){var b=a('button[type="submit"], input[type="submit"]').filter('[form="'+this.$element.attr("id")+'"]').add(this.$element.find('input[type="submit"], button[type="submit"]'));b.toggleClass("disabled",this.isIncomplete()||this.hasErrors()).css({"pointer-events":"all",cursor:"pointer"})}},d.prototype.defer=function(a,b){return this.options.delay?(window.clearTimeout(a.data("bs.validator.timeout")),void a.data("bs.validator.timeout",window.setTimeout(b,this.options.delay))):b()},d.prototype.destroy=function(){return this.$element.removeAttr("novalidate").removeData("bs.validator").off(".bs.validator"),this.$element.find(c).off(".bs.validator").removeData(["bs.validator.errors","bs.validator.deferred"]).each(function(){var b=a(this),c=b.data("bs.validator.timeout");window.clearTimeout(c)&&b.removeData("bs.validator.timeout")}),this.$element.find(".help-block.with-errors").each(function(){var b=a(this),c=b.data("bs.validator.originalContent");b.removeData("bs.validator.originalContent").html(c)}),this.$element.find('input[type="submit"], button[type="submit"]').removeClass("disabled"),this.$element.find(".has-error").removeClass("has-error"),this};var e=a.fn.validator;a.fn.validator=b,a.fn.validator.Constructor=d,a.fn.validator.noConflict=function(){return a.fn.validator=e,this},a(window).on("load",function(){a('form[data-toggle="validator"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery);
+	</script>
+	
+	    <script>
+
+
+
+	     var name,date,email,mobNo,city,area,maritalStatus,veda,gotra,soothram,whatsAppUser,profStatus,eduLevel,fos,internetType,internetSpeed,workshopPref,accomadation,kulaDeivam,nativePlace,collegeName,aoi,sibling;
+	   
+	     function postContactToGoogle() {
+           
+
+           
+
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLSdDqZgJO7r7Y8l7e46d0jGiOEjGG-3qF43QbPJJe_6UQvMsEQ/formResponse",
+                    data: { "entry.85470744": name,"entry.969531295":date,"entry.1467940298":email,"entry.515026237":mobNo,"entry.1855826998":area,"entry.409989214":city,"entry.2122372146":maritalStatus,"entry.1898121325":veda,"entry.788716573":gotra,"entry.1101121099":soothram,"entry.500760621":whatsAppUser,"entry.1458163140":profStatus,"entry.2021461724":eduLevel,"entry.1595372031":fos,"entry.1023943413":internetType,"entry.535602352":internetSpeed,"entry.29175886":kulaDeivam,"entry.513130827":collegeName,"entry.158565975":aoi,"entry.1358827977":nativePlace,"entry.282256031":sibling},
+                    type: "POST",
+                    dataType: "json",
+			crossdomain:true,			
+                    statusCode: {
+                        0: function () {
+                          $('#modalBtn').click();
+                         // resetForm();
+                        },
+                        200: function () {
+                          // console.log('sucess');
+                        }
+                    }
+                });
+        }
+
+        function showEnterArea(event){
+          $('.areaDiv').removeClass('has-error');
+        	if($('#areaCheck').is(':checked')){
+        		$('.enteredAreaDiv').removeClass('displayNone');
+        		$("#enteredArea").prop('required',true);
+        		$('#area').prop('required',false);
+        		$('#area').val('');
+        		$('#area').attr('disabled',true);
+        		$('#areaLbl sub').addClass('displayNone');
+        		//$('#area').css('border-color','#ccc');
+        	}
+        	else{
+        		$('.enteredAreaDiv').addClass('displayNone');
+        		$("#enteredArea").prop('required',false);
+        		$('#area').prop('required',true);
+        		$('#area').attr('disabled',false);
+        		$('#areaLbl sub').removeClass('displayNone');
+        		/*if(!$('#area').val()){
+        			$('#area').css('border-color','#a94442');
+        		}*/
+        	}
+        }
+        function showTimings(event){
+        	if($("input[type='radio'][name='prefClass']:checked").val()=='weekdays'){
+        		$('.wdDiv').removeClass('displayNone');
+        		$('#wdTiming').prop('required',true);
+        		$('#weTiming').prop('required',false);
+        		$('#weTiming').val('');
+        		if(!$('.weDiv').hasClass('displayNone')){
+        		$('.weDiv').addClass('displayNone');
+        	}
+        	}
+        	
+        	else{
+        		if(!$('wdDiv').hasClass('displayNone')){
+                $('.wdDiv').addClass('displayNone');
+           }
+        		$('.weDiv').removeClass('displayNone');
+        		$('#wdTiming').prop('required',false);
+        		$('#weTiming').prop('required',true);
+        		$('#wdTiming').val('');
+
+        	}
+        }
+        
+        function showTime(event){
+        	if($('#timeCheck').is(':checked')){
+        	//$('.preferredTimeDiv').removeClass('displayNone');
+        	$('#preferredTime').prop('required',true);
+        	$('#wdTiming').prop('required',false);
+        	$('#wdTiming').val('');
+        	$('#weTiming').val('');
+        	$('#wdTiming').attr('disabled',true);
+        	$('#weTiming').attr('disabled',true);
+        }
+        else{
+        	//$('.preferredTimeDiv').addClass('displayNone');
+        	if($("input[type='radio'][name='prefClass']:checked").val()=='weekdays'){
+        		$('#wdTiming').prop('required',true);
+        	}
+        	else{
+        		$('#weTiming').prop('required',true);		
+        	}
+        	$('#wdTiming').attr('disabled',false);
+        	$('#weTiming').attr('disabled',false);
+        	$('#preferredTime').prop('required',false);
+        	$('#preferredTime').val('');
+        }
+
+        }
+        function onSubmitButtonClicked(event){
+       event.preventDefault();
+       var correctDate,correctMonth;
+        	name=$('#name').val();
+        	email=$('#email').val();
+        	mobNo=$('#mobNo').val();
+          city=$('#city').val();
+        	area=$('#area').val()?$('#area').val():$('#enteredArea').val();
+        	
+        	veda=$('#veda').val();
+        	gotra=$('#gotra').val();
+        	soothram=$('#soothram').val();
+            date=$("#datepicker").find("input").val();
+            console.log('textbox date',date);
+            profStatus=$('#profStatus').val();
+            if(profStatus=="Student"){
+            eduLevel=$('#stuAdd').val() ;
+            }
+            else if(profStatus=="Resigned Teacher/IT"){
+            eduLevel=$('#subject').val() ;
+            }
+          else{
+            eduLevel="";
+          }
+         // eduLevel=$('#stuAdd').val()?$('#stuAdd').val():"";
+          fos=$('#field').val()?$('#field').val():"";
+          internetType=$('#internetType').val();
+          internetSpeed=$('#dataCardSpeed').val();
+         // workshopPref=$("input[type='radio'][name='workshop']:checked").val();
+         
+         
+        	
+        	/*if(classeOn=="weekdays"){
+        		timing=$('#wdTiming').val()?$('#wdTiming').val():$('#preferredTime').val();
+        	}*/
+        	/*else{
+        		timing=$('#weTiming').val()?$('#weTiming').val():$('#preferredTime').val();
+
+        	}*/
+        	
+        whatsAppUser=$("input[type='radio'][name='whatsApp']:checked").val();
+       // accomadation=$("input[type='radio'][name='accomadation']:checked").val();
+       // accomadation=accomadation?accomadation:"No";
+        maritalStatus=$("input[type='radio'][name='maritalStatus']:checked").val();
+        kulaDeivam=$('#kulaDeivam').val();
+        aoi=$('#aoi').val()?$('#aoi').val():"";
+        collegeName=$('#collegeName').val();
+        nativePlace=$('#native').val();
+        sibling=$("#siblings").val();
+        	postContactToGoogle();
+        	
+        }
+        $(document).ready(function(){
+
+
+var chennaiString="Adambakkam,Adyar,Alandur,Alwarpet,Alwarthirunagar,Ambattur,Aminjikarai,Anakaputhur,Anna Nagar,Annanur,Arumbakkam,Ashok Nagar,Avadi,Ayanavaram,Besant Nagar,Basin Bridge,Chepauk,Chetput,Chintadripet,Chitlapakkam,Choolai,Choolaimedu,Chrompet,Egmore,Ekkaduthangal,Ennore,Foreshore Estate,Fort St. George,George Town,Gopalapuram,Government Estate,Guindy,IIT Madras,Injambakkam,ICF,Iyyapanthangal,Jafferkhanpet,Karapakkam,Kattivakkam,Kazhipattur,K.K. Nagar,Keelkattalai,Kelambakkam,Kilpauk,Kodambakkam,Kodungaiyur,Kolathur,Korattur,Korukkupet,Kottivakkam,Kotturpuram,Kottur,Kovalam,Kovilambakkam,Koyambedu,Kundrathur,Madhavaram,Madhavaram Milk Colony,Madipakkam,Madambakkam,Maduravoyal,Manali,Manali New Town,Manapakkam,Mandaveli,Mangadu,Mannadi,Mathur,Medavakkam,Meenambakkam,MGR Nagar,Minjur,Mogappair,MKB Nagar,Mount Road,Moolakadai,Moulivakkam,Mugalivakkam,Mudichur,Mylapore,Nandanam,Nanganallur,Navalur,Neelankarai,Nemilichery,Nesapakkam,Nolambur,Noombal,Nungambakkam,Otteri,Padi,Pakkam,Palavakkam,Pallavaram,Pallikaranai,Pammal,Park Town,Parry's Corner,Pattabiram,Pattaravakkam,Pazhavanthangal,Peerkankaranai,Perambur,Peravallur,Perumbakkam,Perungalathur,Perungudi,Pozhichalur,Poonamallee,Porur,Pudupet,Purasaiwalkam,Puthagaram,Puzhal,Puzhuthivakkam,Raj Bhavan,Ramavaram,Red Hills,Royapettah,Royapuram,Saidapet,Saligramam,Santhome,Sembakkam,Selaiyur,Shenoy Nagar,Sholavaram,Sholinganallur,Sithalapakkam,Sowcarpet,St.Thomas Mount,Tambaram,Teynampet,Tharamani,T. Nagar,Thirumangalam,Thirumullaivoyal,Thiruneermalai,Thiruninravur,Thiruvanmiyur,Tiruverkadu,Thiruvotriyur,Tirusulam,Tiruvallikeni,Tondiarpet,United India Colony,Vandalur,Vadapalani,Valasaravakkam,Vallalar Nagar,Vanagaram,Velachery,Villivakkam,Virugambakkam,Vyasarpadi,Washermanpet,West Mambalam";
+
+var bengaluruString="Sarjapur Road,Whitefield,Bannerghatta Road,Electronic City,HSR Layout,Jayanagar,JP Nagar,Hosur Road,Indira Nagar,Koramangala,Yelahanka,Hesaraghatta Main Road,Devanahalli,Marathahalli,Hebbal,Kanakapura Road,Anekal,Hennur Road,C V Raman Nagar,Kalyan Nagar,RT Nagar,Jalahalli,HRBR Layout,BTM Layout,Ramamurthy Nagar,Brooke Field,Jakkur,Dollars Colony,Abbigere,Rajanukunte,G M Palya,Kundalahalli,Madiwala,Fraser Town,Chandapur,Gottigere,Basavanagar,Nagarbhavi,Belandur,Hoskote,Chamarajpet,Richards Town,Lavelle Road,Kodigehalli,Chikkajala,Hanumanth Nagar,Akshaya Nagar,Thanisandra,Sarjapur,Hegde Nagar,Jigani Industrial Area,Mathikere,Rest House Road,Begur Road,Rajajinagar,MG Road,HBR Layout,Banaswadi,Uttarahalli,Airport Road,Thippasandra,Banashankari,Bagalur,Horamavu,KR Puram,Bommanahalli,OMBR Layout,Mysore Road,Silkboard,RMV Extension Stage,Old Madras Road,Kasturi Nagar,Tumkur Road,Richmond Road,Vidyaranyapura,Mahadevapura,Rajarajeshwari Nagar,Malleshwaram,AECS Layout,Chikkaballapur,Defence Colony,Kanaka Nagar,Hulimavu,Thyagaraj Nagar,Basaveshwaranagar,Airport Area,Kumaraswamy Layout,Sanjay Nagar,Hoskote,Kudlu Gate,RBI Layout,Palace Road,Hoodi Village,Millers Road,Huskur,Vijaya Bank Layout,Shanti Nagar,Hebbal Kempapura,Tippasandra,Naganathapura,Yeshwantpur,Jeevan Bima Nagar,Cox Town,Ulsoor,Benson Town,ITPL,Doddaballapur,Kaggadaspura,Nagwar,Attibele,Padmanabhanagar,Vijayanagar,Kengeri,Peenya,Magadi Road,NelaMangala,Sahakar Nagar,Dodballapur Road,Outer Ring Road,Vigyan Nagar,Basavanagudi,Mallesh Palaya,Domlur,Cookes Town,Old Airport Road,Bellary Road,Sadaramangala,Anjanapura,Majestic,Vasanth Nagar,Wilson Garden,ISRO Layout,HMT Layout,Nagawara,Doddaballapur Road,Central Silk Board,Nandi Hills,Ganganagar,Bommasandra,Pai Layout,Sadaramangala,Prashanth Nagar,Hennur,Raj Bhavan,Vidyanagar,Bilekahalli,Manek Chowk,Chambal River,Indraprastha";
+
+
+
+var hyderabadString ="Gachibowli,Shamshabad,Kukatpally,Mallapur,Hi Tech City,Habsiguda,Jubilee Hills,Secunderabad,Banjara Hills,Manikonda,Uppal Kalan,Ameerpet,Shamirpet,Sainikpuri,Srinagar Colony,Quthbullapur,A C Guards,A S Roa Nagar,Abids Road,Adarsh Nagar,Adikmet,Afzalgunj,Agapura,Ahmed Nagar,Akbar Road,Alexander Road,Aliabad,Alwal,Amberpet,Ameerpet X Road,Anand Bagh,Anand Nagar Colony,Ashok Nagar,Asif Nagar,Attapur,Attapur Ring Road,Auto Nagar,Azamabad,Azampura Masjid,Baber Bagh,Bachpally,Badichowdi,Bagh Amberpet,Bagh Lingampally,Bahadurpura,Bahadurpurpally,Bairamalguda,Bakaram,Bala Nagar,Balapur,Balkampet,Bandimet,Bandlaguda,Bank Street,Bansilal Pet,Bansilalpet,Bapuji Nagar,Barkas,Barkatpura,Basheerbagh,Bazarghat,Begum Bazar,Bhagya Nagar Colony,Bharat Nagar,Bhel,Bholakpur,Bk Guda,Bod Uppal,Boggulakunta,Bolaram,Borabanda,Boudha Nagar,Bowenpally,Boyiguda,Chaderghat,Chaitanyapuri,Champapet,Champapet X Road,Chanchalguda,Chanda Nagar,Chandrayanagutta,Chandrayangutta,Chappel Bazar,Chappel Road,Char Kaman,Charkaman,Charlapally,Charminar,Chatta Bazar,Cherlapally,Chikkadpally,Chilkalguda,Chintal,Chintal Basti,Chintalkunta,Chirag Ali Lane,Chudi Bazar,D D Colony,Dabeerpura,Dabeerpura North,Dar Ul Salam,Darul Shifa,Defence Colony,Devan Devdi,Dhan Bazar,Dharam Karan Road,Diamond Point,Dilshad Nagar,Dilsukhnagar Main Road,Distillery Road,Domalguda,Doodh Bowli,Dr. A.S Rao Nagar,Dwarkapuri Colony,East Anand Bagh,East Marredpally,ECIL,Ecil Post,Ecil X Roads,Edi Bazar North,Erragadda,Erramanzil,Erramanzil Colony,Esamia Bazar,Falaknuma,Fateh Darwaza,Fateh Maidan,Fateh Nagar,Feel Khana,Feroz Guda,Film Nagar,Gaddi Annaram,Gaddi Annaram X Roads,Gagan Mahal,Gagan Pahad,Gandhi Nagar,Gandhipet,Gandhipet Road,General Bazar,Ghansi Bazar,Ghasmandi,Ghatkesar,Golconda,Golconda X Roads,Gosha Mahal,Gowliguda,Gowliguda Chaman,Green Lands,Green Park Extension,Gudimalkapur,Gudimalkapur New Po,Gulzar House,Gun Foundry,Gun Rock,Gunfoundry,Hafiz Pet,Hakimpet,Hanuman Tekdi,Haribowli,Hasmatpet,Hastinapuram,Hayat Nagar,Hill Fort,Hill Fort Road,Hill Street,Himayat Nagar,Himayat Nagar X Roads,Himayat Sagar,Hmt Nagar,Hmt Road,Humayun Nagar,Hussaini Alam,Hyder Basti,Hyder Nagar,Hyderabad Central,Hyderguda,Ibrahim Bagh,Ibrahimpatnam,Inderbagh,Indira Park,Jagadgirigutta,Jagdish Market,Jahanuma,Jambagh,Jamia Osmania,Jawahar Nagar,Jawaharlal Nehru Road,Jeedimetla,Kachi,Kachiguda,Kachiguda X Road,Kakaguda,Kakatiya Nagar,Kalasiguda,Kali Kabar,Kali Kaman,Kalyan Nagar,Kamala Nagar,Kamala Puri Colony,Kamla Nagar,Kanchanbagh,Kandoji Bazar,Kapra,Karimnagar,Karkhana,Karman Ghat,Karmanghat,Karmanghat X Roads,Karvan,Karwan,Kavadiguda,Keshavagiri,Khairatabad,Kharkhana Main Road,King Koti,King Koti X Road,Kishan Bagh,Kishangunj,Kompally,Kondapur,Kothaguda,Kothapet,Kphb,Kphb Colony,Krishna Nagar,Kukatpally Colony,Kummarguda,Kundan Bagh,Kushaiguda,Kattedan,Kavadi Guda,L B Nagar,L B Stadium,L B Stadium,Lad Bazar,Lakdi Ka Pul,Lal Bazar,Lal Darwaza,Lalapet,Lallaguda,Langer House,Liberty,Lingampalli,Lingampally,Lothukunta,Lower Tank Bund Road,M G Road,Machili Kaman,Madannapet,Madhapur,Madhura Nagar,Madina,Madina Guda,Mahankali Street,Maharaj Gunj,Mahatma Gandhi Road,Mahendra Hills,Malakpet,Malakpet Extension,Malkajgiri,Mallapur,Mallapuram,Mallepally,Mallepally North,Mangal Hat,Mansurabad X Road,Market Street,Marredpally,Maruthi Colony,Maruthi Nagar,Masab Tank,Medchal,Meerpet,Mehboob Gunj,Mehboob Nagar,Mehdipatnam X Road,Mettu Guda,Minister Road,Miralam Mandi,Miyapur,Mogulpura,Moinabad,Monda Market,Moosabowli,Moosapet,Moosaram Bagh,Moosaram Bagh X Road,Moti Nagar,Moula Ali,Mozamjahi Market,Mughalpura,Muktargunj,Murad Nagar,Musheerabad,Mylargadda,Nacharam,Nagarjuna Hills,Nagarjuna Nagar,Nagarjuna Sagar Road,Nagole,Nagole X Road,Nallagutta,Nallakunta,Namala Gundu,Nampally,Nampally Station Road,Narayanaguda,Narayanguda,Nayapul,Necklace Road,Nehru Nagar,Neredmet,Neredmet Cross Road,New Bowenpally,New Boyiguda,New Malakpet,New Nagole,New Nallakunta,New Nallakunta X Road,New Osmangunj,Nimboliadda,Nizam Shahi Road,Nizamabad,Nizampet,Nizampet Road,Noor Khan Bazar,Old Alwal,Old Bowenpally,Old Boyiguda,Old Ghasmandi,Old Jail Street,Old Malakpet,Old Topkhana,Osman Shahi,Osmangunj,Osmania University,Padma Rao Nagar,Palika Bazar,Pan Bazar,Panjagutta,P And T Colony,Paradise,Paradise Circle,Parklane,Parsigutta,Patancheru,Patel Market,Pathargatti,Patny,Penderghast Road,Picket,Pot Market,Pragathi Nagar,Prakash Nagar,Prasanth Nagar,Purana Pul,Purani Haveli,Putli Bowli,R R District,Raj Bhavan Road,Rajendra Nagar,Ram Nagar,Ram Nagar X Road,Ramachandra Puram,Ramakrishna Puram,Ramakrishna Puram Road,Ramanthapur,Ramgopalpet,Ramkote,Ramnagar Gundu,Ranga Reddy Nagar,Ranigunj,Rashtrapathi Road,Rasoolpura,Red Hills,Regimental Bazar,Rethi Bowli,Rikabgunj,Risala Bazar,Rtc Colony,RTC X Road,S D Road,S P Road,S R Colony,S R Nagar,Safilguda,Sagar Road,Sai Nagar,Saidabad,Saifabad,Saleem Nagar,Sanath Nagar,Santosh Nagar,Saroor Nagar,Sebastian Road,Secretariat,Seetharambagh,Serilingampally,Shah Ali Banda,Shahpur Nagar,Shaikpet,Shahpur Nagar,Shamshergunj,Shanker Bagh,Shanker Mutt,Shanti Nagar,Shivam Road,Shivarampally,Siddarth Nagar,Siddiamber Bazar,Sikh Road,Sikh Village,Sikh Village Road,Sindhi Colony,Sitaphal Mandi,Somajiguda,Somajiguda Circle,Sri Krishna Nagar,Sri Srinivas Colony,Srinagar,Srinagar Colony Main Road,Srinivasa Colony,Srinivasa Nagar,Srinivasa Nagar Colony,St. Johns Road,St. Marys Road,Subash Road,Sultan Bazar,Surya Nagar Colony,Shapur Nagar,Shivaji Nagar,Tad Bund,Tad Bund X Road,Talab Katta,Talabkatta,Tank Bund,Tank Bund Road,Tar Bund,Tar Bund X Road,Taranagar,Tarnaka,Tilak Nagar,Tilak Road,Tobacco Bazar,Toli Chowki,Topkhana,Trimulgherry,Trimulgherry X Road,Troop Bazar,Uppal,Uppuguda,Vanasthalipuram,Vasavi Nagar,Vengal Rao Nagar,Venkatapuram,Vidyanagar,Vijay Nagar Colony,Vikas Nagar,Vikrampuri,Vikrampuri Colony,Vinayak Rao Nagar,Vithalwadi,Warasiguda,West Marredpally,Yakutpura,Yapral,Yellareddy Guda,Yellareddyguda,Yousuf Bazar,Yousufguda,Zamistanpur,Tirumalgherry,Hyderabad Airport 1,Hyder Shah Kote,Hyderabad GPO,Hyderabad Jubilee HO,Hyderabad Public School,I.E.Nacharam,I.M.Colony,Ibrahim Bagh Lines,Ie Moulali,IICT,Jaggamguda,Jama I Osmania,Jillellaguda,Karwan Sahu,Kachivani Singaram,Kattedan Ie So,Keesara,Keesaragutta,Keshogiri SO,Khairatabad HO,Kingsway,Kismatpur,Kolthur,Korremal,Kulsumpura,Kyasaram,Lalgadi Malakpet,Mehdipatnam,Old City,Pratap Singaram,Qazipura,RC Imarat So,Rahmath Nagar,Rail Nilayam,Raj Bhavan,Rajbolaram,Ag College,AG Office,A.Gs Staff Quarters,Amber Nagar,Anand Nagar,Ananthagiri,Andhra Mahila Sabha,Aperl,APHB Colony Moulali,Atvelli,Badangpet,Begumpet,Begumpet Police Lines,Bharath Nagar Colony,Boduppal,Bogaram,Central Police Lines,Chanchalguda Colony,Chandulal Baradari,CRP Camp,Cyberabad,Dargah Hussain Shah Wali,Darushifa,Dattatreya Colony,Dhoolpet,Fathenagar Colony,Gajularamaram,Gandhi Bhavan,Girmapur,Golconda Chowrastha,Yadgarpally,Vidhan Sabha,Vishali Nagar,Vaidehi Nagar,Thumkunta,Thimmaipally,Swaraj Nagar,Sardar Vallabhbhai Patel National Police Academy,Survey Of India,Suraram,Sultan Shahi,Kachiguda Station,State Bank Of Hyderabad,Sripuram Colony,Srinivasapuram,South Banjara Hills,Snehapuri Colony,Sitaphalmandi,Shyam Nagar,Turkapalliyadaram,Tagarikanaka,Ankireddypalli,Ankushapur,Annojiguda,Cherial,Vikarabad,Gowdavalli,Hanumanpet,Hassan Nagar,Himayat Nagar,GSI (SR) Bandlaguda,Abids,Amberpet,Dilsukhnagar,Sanjeeva Reddy Nagar,HUDA Residential Complex,Hindustan Cables Ltd,DK Road,High Court SO,LIC Division,Langer House,Malakpet Colony,Mamidipalli,Mangalhat,Mansoorabad,Moghalpura,Rampally,Nanakramguda,Osman Nagar,Padmarao Nagar,Padmavathi Nagar,Pahadi Shareef,Koti,Pirzadi Guda,Nuthankal,P AND T Colony S O,Old MLA Quarters,New MLA Quarters,NGRI,Rein Bazar,Saidabad Colony,Sanath Nagar Colony,Seetharampet,Santosh Nagar Colony,Sakkubai Nagar,Napier Lines,Osmania General Hospital,Hyderabad Airport Limited,Ramakrishna Math,Parishram Bhavan,Peddalaxmapur,Ram Koti,Rampallidiara,Rangareddy District Court,Ravalkole,Sahifa S O,Sanath Nagar IE,Hindi Bhawan";
+
+
+var trivandrumString="Thiruvananthapuram,Sasthamangalam,Vattiyoorkavu,Thirumala,Sreekariyam,Poojappura,Peyad,Peroorkada,Varkala,Vazhuthacaud,Kazhakootam,Mannanthala,Vattappara,Valiyavila,Vizhinjam,Kudappanakunnu";
+
+var thrissurString="Aloor,Amballur,Aranattukara,Athirappilly,Chelakkara,Chembuchira,Chermanangad,Cherpu,Chetuva,Elanad,Engandiyoor,Irinjalakuda,Kadalassery,Kochanoor,Kodakara,KODALY,Kodungallur,Kunnamkulam,Mala,Mupliyam,Mupliyam,Nadathara,Nandipulam,Nettissery,Pavaratty,Pazhayannur,Pazhuvil,Peramangalam,Poovathussery,Pudukkad,Puthenpeedika,Pulikkanny,Thalore,Triprayar,Urakam,valappad,Vatanappilly,Varandarappilly,Vellikulangara,Wadakkancheri,Vendore,Kadavallur,Perumpilavu,kaattakambal,kallur";
+
+var chennaiArray= chennaiString.split(',');
+var bengaluruArray= bengaluruString.split(',');
+var hyderabadArray= hyderabadString.split(',');
+var trivandrumArray= trivandrumString.split(',');
+var thrissurArray= thrissurString.split(',');
+
+
+        	  $('[data-toggle="tooltip"]').tooltip({
+        placement : 'bottom'
+    });
+
+$('#datepicker').datepicker({format:'dd/mm/yyyy', autoclose: true,orientation:"bottom"});
+  $('#profStatus').change(function(){
+
+  if($(this).val()=="Student"){
+   
+ 
+          var edulevelHt='<label class="control-label col-sm-3 " > Select the level of Education: <sub>*</sub></label>'+
+            '<div class="col-sm-4"> <select id="stuAdd" onchange="showAdditonalEduDetails(event)" class="form-control" required data-error="Select a Level"><option value="">Select a Level</option>'+
+            '<option value="School">School</option>'+
+      '<option value="UG"> Unde Graduate</option>'+
+      '<option value="PG">Post Graduate</option>'+'<option value="Research">Research</option>'+'</select></div><div class="help-block with-errors" ></div>';
+      $('.eduLevelDiv').removeClass('displayNone');
+      $('.eduLevelDiv').html(edulevelHt);
+
+        }
+
+        else if($(this).val()=="Resigned Teacher/IT"){
+var subjectHTML='<label class="control-label col-sm-3 " >Subject Handled/ Primary Skillset: <sub>*</sub></label>'+
+            '<div class="col-sm-4"><input type=text placeholder="Enter Subject/Skill (Multiple Subjects/Skills comma seperated)" id=subject class=form-control required data-error="Enter a Subject"> </div><div class="help-block with-errors" ></div>';
+            
+            
+            $('.eduLevelDiv').removeClass('displayNone');
+      $('.eduLevelDiv').html(subjectHTML);
+      showAdditonalEduDetails();
+        }
+      
+       else{
+        $('.eduLevelDiv').addClass('displayNone');
+         $('.eduLevelDiv').empty();
+          $('.eduLevelDiv').removeClass('has-error');
+            showAdditonalEduDetails();
+       
+      }
+    });
+
+  $('#internetType').change(function(){
+      $('.internetSpeedDiv').removeClass('has-error');
+    if($(this).val()=="Data Card"){
+
+       var dataCardHt='<label class="control-label col-sm-3 " > Select the Data Card Speed: <sub>*</sub></label>'+
+      '<div class="col-sm-2">'+
+       '<select class="form-control" id="dataCardSpeed" required data-error="Please select a Speed">'+
+      '<option value="">Select a Speed</option>'+
+      '<option value="2G">2G</option>'+
+      '<option value="3G"> 3G</option>'+
+      '<option value="4G">4G</option></select></div><div class="help-block with-errors" ></div>';
+      $('.internetSpeedDiv').html(dataCardHt);
+      $('.internetSpeedDiv').removeClass('displayNone');
+    }
+    else if($(this).val()=="WIFI"||$(this).val()=="Broadband"||$(this).val()=="Fibre Optic"){
+      var dataCardHt='<label class="control-label col-sm-3 " > Select the Speed: <sub>*</sub></label>'+
+      '<div class="col-sm-2">'+
+       '<select class="form-control" id="dataCardSpeed" required data-error="Please select a Speed">'+
+      '<option value="">Select a Speed</option>'+
+      '<option value="512 Kbps">512 Kbps</option>'+
+      '<option value="1 Mbps"> 1 Mbps</option>'+
+      '<option value="2 Mbps"> 2 Mbps</option>'+
+       '<option value="4 Mbps"> 4 Mbps</option>'+
+       '<option value="8 Mbps"> Greater than 4 Mbps</option>'+
+      '</select></div><div class="help-block with-errors" ></div>';
+      $('.internetSpeedDiv').html(dataCardHt);
+      $('.internetSpeedDiv').removeClass('displayNone');
+    }
+    else {
+      $('.internetSpeedDiv').empty();
+     $('.internetSpeedDiv').addClass('displayNone'); 
+    }
+
+  });
+
+  $('input:radio[name=workshop]').click(function(){
+    if($(this).attr("value")=="2 Day Workshop"){
+var accomHtml='<label class="control-label col-sm-3 " > Need Accomadation at Good Hostel? <sub>*</sub></label>'+
+'<div class="col-sm-1 radio">'+
+'<label><input type="radio" required name="accomadation" value="Yes" data-error="Please Select One Option" >Yes</label>'+
+'</div>'+
+'<div class="col-sm-1 radio">'+
+'<label><input type="radio" required name="accomadation" value="No">No</label>'+
+'</div><div class="help-block with-errors" ></div>';
+$('.accomdationDiv').html(accomHtml);
+      $('.accomdationDiv').removeClass('displayNone');
+
+    }
+     else {
+      $('.accomdationDiv').empty();
+     $('.accomdationDiv').addClass('displayNone'); 
+    }
+
+  });
+    
+
+$('#city').change(function(){
+$('#area').empty(); 
+if($(this).val()=="Chennai"){
+appendOptions(chennaiArray);
+
+}
+else if($(this).val()=="Bengaluru"){
+appendOptions(bengaluruArray);
+}
+
+else if($(this).val()=="Hyderabad"){
+appendOptions(hyderabadArray);
+}
+else if($(this).val()=="Trivandrum"){
+appendOptions(trivandrumArray);
+}
+
+else if($(this).val()=="Thrissur"){
+appendOptions(thrissurArray);
+}
+else{
+  $('#area').append('<option value="">Select an Area</option>');
+}
+});
+
+function appendOptions(areaArray){
+ 
+$('#area').append('<option value="">Select an Area</option>');
+/*for(var i=0;i<areaArray.length;i++){
+$('#area').append('<option value='+areaArray[i]+'>'+areaArray[i]+'</option>');
+
+}*/
+
+$.each(areaArray, function (i, area) {
+    $('#area').append($('<option>', { 
+        value: area,
+        text : area 
+    }));
+});
+
+}
+
+    $('#registrationForm').validator().on('submit', function (e) {
+  if (e.isDefaultPrevented()) {
+  	if(!$('#gotra').val()){
+  		$('.dropdown-toggle').css('border-color','#a94442');
+  		$('.gotraError').text('Please select a gotra');
+  		$('.gotraError').css('color','#a94442');
+  		$('.dropdown-toggle').addClass('gHasError');
+  	}
+  	else{
+  		$('.dropdown-toggle').css('border-color','#ccc');
+  		$('.dropdown-toggle').removeClass('gHasError');
+  		$('.gotraError').text('');
+  		
+  	}
+  	$('#alertBtn').click();
+       
+   } 
+   else {
+  e.preventDefault();
+  $('#cBtn').click();
+
+  }
+});
+        });
+    
+ 
+
+  function confirmOkayClicked(e){
+    onSubmitButtonClicked(e);
+    $('.dropdown-toggle').css('border-color','#ccc');
+    $('.dropdown-toggle').removeClass('gHasError');
+    $('.gotraError').text('');
+
+  }  
+function resetName(){
+ $('#name').val('');
+ $("#datepicker").find("input").val('');
+ $('#profStatus').val("");
+ $('.eduLevelDiv').empty();
+ $('.eduSchoolDetailsDiv').empty();
+ $('.eduAddDetailsDiv').empty();
+ $('.eduLevelDiv').addClass('displayNone');
+ $('.eduSchoolDetailsDiv').addClass('displayNone');
+ $('.eduAddDetailsDiv').addClass('displayNone');
+
+}
+function resetForm(){
+ 
+	document.getElementById("registrationForm").reset();
+	showEnterArea();
+ $('#gotra').val('');
+  $('.eduLevelDiv').empty();
+ $('.eduSchoolDetailsDiv').empty();
+ $('.eduAddDetailsDiv').empty();
+ $('.eduLevelDiv').addClass('displayNone');
+ $('.eduSchoolDetailsDiv').addClass('displayNone');
+ $('.eduAddDetailsDiv').addClass('displayNone');
+	$('.selectpicker').selectpicker('render');
+}
+ function showAdditonalEduDetails(event){
+  $('.eduAddDetailsDiv').removeClass('has-error');
+     $('.eduSchoolDetailsDiv').removeClass('has-error');
+  if($('#stuAdd').val()=="School"){
+
+    var schoolNameHT='<label class="control-label col-sm-3 " > Enter the School Name :<sub>*</sub></label>'+
+    '<div class="col-sm-4"> <input type=text class="form-control" id="collegeName" placeholder="Enter School Name" required data-error="Please Enter School Name">'+
+    '</div><div class="help-block with-errors" ></div>';
+
+var schoolAddDets='<label class="control-label col-sm-3 " >Standard: <sub>*</sub></label>'+
+      '<div class="col-sm-2">'+
+       '<select class="form-control" id="field" required data-error="Please select a Standard">'+
+      '<option value="">Select a Standard</option>'+
+      '<option value="1">I</option>'+
+      '<option value="2"> II</option>'+
+      '<option value="3">III</option>'+
+      '<option value="4">IV</option><option value="5">V</option><option value="6">VI</option> <option value="7">VII</option>'+
+   '<option value="8">VIII</option><option value="9">IX</option><option value="10">X</option><option value="11">XI</option>'+
+   '<option value="12">XII</option></select></div><div class="help-block with-errors" ></div>';
+   $('.eduAddDetailsDiv').html(schoolAddDets);
+   $('.eduSchoolDetailsDiv').html(schoolNameHT);
+   $('.eduAddDetailsDiv').removeClass('displayNone');
+   $('.eduSchoolDetailsDiv').removeClass('displayNone');
+      
+ }
+  else if($('#stuAdd').val()=="UG"||$('#stuAdd').val()=="PG"||$('#stuAdd').val()=="Research"){
+
+        var collegeNameHT='<label class="control-label col-sm-3 " >College/University Name :<sub>*</sub></label>'+
+    '<div class="col-sm-4"> <input type=text class="form-control" placeholder="Enter College/University Name" id="collegeName" required data-error="Please Enter School Name">'+
+    '</div><div class="help-block with-errors" ></div>';
+    var fieldOFStudyHT='<label class="control-label col-sm-3 "> Field of Study: <sub>*</sub></label>'+
+    '<div class="col-sm-4">'+
+     ' <input type="text" class="form-control" id="field" placeholder="Enter Field of Study" pattern="[A-Za-z. ]{1,100}" data-error="Please  Enter A Field of Study" required ></div><div class="help-block with-errors" ></div>';
+    
+      $('.eduAddDetailsDiv').html(fieldOFStudyHT);
+   $('.eduSchoolDetailsDiv').html(collegeNameHT);
+      $('.eduAddDetailsDiv').removeClass('displayNone');
+       $('.eduSchoolDetailsDiv').removeClass('displayNone');
+   
+   
+   
+      
+     
+  }else{
+     $('.eduAddDetailsDiv').addClass('displayNone'); 
+     $('.eduSchoolDetailsDiv').addClass('displayNone');
+     $('.eduAddDetailsDiv').empty();
+     $('.eduSchoolDetailsDiv').empty();
+  }
+}
+function linkOnClick(event){
+event.preventDefault();
+}
+
+
+function removeError(event){
+	//console.log($('#gotra').val());
+   	if($('#gotra').val()==""){
+  		$('.dropdown-toggle').css('border-color','#a94442');
+  		$('.dropdown-toggle').addClass('gHasError');
+  		$('.gotraError').text('Please select a gotra');
+  		$('.gotraError').css('color','#a94442');
+  	}
+  	else{
+  		$('.dropdown-toggle').css('border-color','#ccc');
+  		$('.dropdown-toggle').removeClass('gHasError');
+  		$('.gotraError').text('');
+  		
+
+  	}
+
+}
+
+    </script>
+    <style type="text/css">
+    .displayNone{
+    	display: none;
+    }
+    sub{
+    	color:red;
+    }
+    div,.control-label{
+    	font-family: "Times New Roman", Times, serif;
+
+    }
+
+    .btn-primary{
+    	background:#EFD097;
+    	border-color: maroon;
+    	color:maroon;
+    	font-weight: bold;
+    }
+    .btn-primary:focus{
+    	background: #EFD097;
+    	border-color: maroon;
+    	color:maroon;
+    }
+    .btn-primary:hover{
+    	background: maroon;
+    	color: white;
+    }
+
+    optgroup
+{
+color: red;
+}
+option{
+	color:black;
+}
+.btn-primary.disabled{
+	background: #EFD097;
+	border-color: maroon;
+	opacity: 1;
+}
+.btn-primary.disabled:hover{
+	background:maroon;
+}
+.btn-primary.disabled:focus{
+	background:#EFD097;
+	border-color: maroon;
+	color:maroon;
+}
+.blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { color: red; }
+    50% { color: maroon; }
+    100% { color: red; }
+}
+
+@-webkit-keyframes blinker {  
+   0% { color: red; }
+    50% { color: maroon; }
+    100% { color: red; }
+}
+
+@keyframes blinker {  
+    0% { color: red; }
+    50% { color: maroon; }
+    100% { color: red; }
+}
+
+
+.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default{
+	background: white;
+
+}
+.holder{
+  padding-top: 1%;
+  padding-bottom:1%;
+  /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);*/
+  border:brown 1px solid;
+  margin-bottom: 1.5%;
+}
+.btnHolder{
+  padding-top: 1%;
+  padding-bottom:1%;
+}
+
+.has-error .form-control,.gHasError{
+ border-width: 2px;
+}
+
+ </style>
+
+
+
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Success</h4>
+      </div>
+      <div class="modal-body">
+        <p>Thank You for registering with us. We will get back to you shortly.</p>
+        <p>Do you want to Register for another person in your family? All common values will be retained</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetName()">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetForm()">No</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="modal fade" id="errorAlert">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Alert</h4>
+      </div>
+      <div class="modal-body">
+        <p>Ensure the fields highlighted in red are not empty/not selected or not filled correctly. Name-Alphabets only (Max:100 characters),MobNo/Landline- Should have 8 or 10 digits & Email format-example@____.com</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Ok</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="confirmAlert">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>By clicking on Submit you confirm the details entered. Click 'OK'to proceed or 'Cancel' to re check the details.</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="confirmOkayClicked(event)" >OK</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<div class="modal fade" id="faqModel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">FAQ's</h4>
+      </div>
+      <div class="modal-body">
+       <p>1. Is there any prerequisite learning to be met for enrolling myself in the Veda class</p>
+        <p>No previous learning is required. Don't skip the class, dedicate 4 hours in a week to learn, and practice atleast 1 hour a day at home. Doing Trikaala Sandhyavandanam daily is mandatory. Dedicated classes will be arranged for a.) Correcting the pronunciation b.) Learning/correcting the procedure.</p>
+        <p>2. Is the Veda class planned only on the weekends?</p>
+        <p>Yes, the current focus is to start weekend classes only (Saturday & Sundays), 4 hours a week - 8 classes a month (16 hours).</p>
+        <p>3. Is the weekend Veda class planned only in Chennai ?</p>
+        <p>Though GKVS Batch 1 focused on Chennai City, due to overwhelming response we are happy to extend it to other major cities across India.</p>
+        <p>4. How and when the location of the classes finalized?</p>
+        <p>Multiple areas will be grouped to make a single batch. Illustration - In Chennai, East & West Tambaram,Selaiyur, Camp Road can be considered as a single batch, Pallavaram,Chrompet can be considered other batch. The final grouping depends on the number of respondents from each area/city.The above is only for illustration purpose. Further communication in this regard will be shared via email / hand phone.</p>
+           <p>5. Is there a standard syllabus for the classes?</p>
+           <p>Yes, The Syllabus is centralized and standardized for all the batches. The students will be trained on the following for the next 12 to 14 months. Sandhya Vandanam, Madhyanikam, Sayam Sandhya Vandanam, Samitha Dhanam, Brahma Yagnam, Purusha Sooktham, Sree Sooktham, Manthra Pushpam, Gayathiri Manthram on various devata, Narayana Sooktham, Durga Sooktham, Bhoo Sooktham, Neela Sooktham, Nithya Pooja Mantras, Pancha Shanti Mantras, Sree Rudram, Chamakam, Seekshavalli (Thaitthiriya Upanishad), Anandavalli, Brahuvalli(Thaitthirirya Upanishad), Mahanyasa Anuvakaas, Stories from Vedas and Puranas, Anushtana Niyamam, Vedic way of life and its benefits, how to harmonize nithya karma anushtaanam in modern world, do's and dont's along with its rationale etc.</p>
+           
+           <p>6. Does the syllabus branch out to the specific Veda ( Rig, Yajur, Sama)</p>
+           <p>Yes, that is the plan. Upon completing the preparatory studies and its comfortable implementation by the vidhyarthis as a nithya karma, they will be initiated to their svasaakha paatam. That is, their respective Vedas.</p>
+           <p>7. Is there a Dakshina for the Vadhyar?</p>
+           <p>There will be minimum monthly amount of  Vadhyar Dakshina for the classes. We shall communicate the exact Dakshina via email / hand phone. Please note, even if you skip a few classes due to unavoidable reasons, requesting you to pay the dakshina which will be very nominal..</p>
+           <p>8. Is the venue for each batch finalized?</p>
+           <p>No. Venue can be decided only after the registration is over. We will communicate the venue via email / hand phone. On a general note, the class will be conducted in one or more Grhaas,Hosting by rotation is also welcome.. Those who wish to share their homes for this cause are requested to drop in a mail to us (vedavyasar12@gmail.com).</p>
+           <p>9. Is there a point of contact (POCs) for each area?</p>
+           <p>Yes, we will publish the point of contact for each area. The points of contact will facilitate the smooth functioning of the classes. POCs can be rotated based on the individual's interest in taking additional responsibilities.</p>
+            <p>10. Is there any books prescribed for the class?</p>
+            <p>Yes, we shall follow uniform book as prescribed by the authentic source. The publisher, name of the book and cost  will be communicatedat appropriate time via email / hand phone.However it is advised to learn Vedas by hearing and reciting it repeatedly(tiruvai).</p>
+            <p>11. Can I request for change in Syllabus?</p>
+            <p>No, the syllabus for the entire course is fixed by a group of competent Vaidhikaas. We need to just follow Vaadhyar instructions and keep learning.</p>
+            <p>12. Is there a plan to start new batch after the initial batch?</p>
+            <p>Yes, This is GKVS batch 2 and it will be a continuous process. New batches can be added, however it depends on the number of persons who would like to enroll in each area. We may need a minimum of 6 to 10 dedicated persons to start a new batch.</p>
+            <p>13. Is the class available via Skype or other modes of online learning?</p>
+            <p>Vedas are best learnt through a Guru, in person. There are no plans to take this online.</p>
+            <p>14. Is there a dress code to be followed?</p>
+            <p>Yes. Grhastaas should come in Panchakacham and Brahmacharis in Veshti.</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal  -->
+	<div class="col-sm-12">
+	
+	<div class="col-sm-12 " style="background:#EFD097; color:maroon;padding:1%">
+	<div class="col-xs-12 ">
+				<img src="https://i.ytimg.com/vi/VJzRPyu5eq0/hqdefault.jpg" class="img-responsive"style="height:60px;margin:0 auto;">
+	</div>
+<label class="col-xs-12 text-center" style="font-size: 25px;  ">Guru Krpaa Veda Sibhiram</label>
+			<label class="col-xs-12" style="font-size: 20px; ">It is never too late....</label>
+			<div class="col-sm-12">
+			<div class="row">
+				<div class="col-sm-12">
+					
+				</div>
+			</div>
+			<p style="font-size: 16px;">
+				The Vedas are the roots of our Hindu Culture & Tradition. They are the fountain head of our civilization and life values. There are quite a few amongst us who bemoan their ignorance of the Vedas and also their own failure early in life to evince interest in the Vedic studies. They also feel an urge to do something about it. This is a common regret even among the devout, but that itself is a healthy sign of Spiritual development.
+</p>
+<p style="font-size: 16px;">
+GKVS have, therefore, chalked out a project to full fill the ambition of such people - working men, the elderly, and students, and initiate them into the Vedic discipline. The course is specially being tailored to suit the needs of the new aspirants. Those who are seriously interested in the pursuit of Vedic knowledge can enroll themselves in this course. Please fill up the registration form, and we shall get back to you soon. Kindly refer to the Frequently Asked Questions (FAQ) section to get your doubts clarified. It is never too late to learn values.
+			</p>
+				
+     <!--  <label class="col-sm-12" style="font-size: 42px; "></label> -->
+      
+      <p style="font-size: 14px; font-weight:bold" >
+  
+       Last date for registrtion - <span class="blink_me"> 30th September 2016.</span> Tentative class start date - <span class="blink_me">October 29th, 30th 2016.</span> 
+      </p>
+      
+		<div class="row">
+			<label class="col-sm-12 col-md-12">If you face any technical issues during registration contact the following numbers for manual registeration </label>
+			</div>
+			<div class="row">
+			<label class="col-sm-3 col-md-2">+91 8754475292 </label>
+			<label class="col-sm-3 col-md-2">+91 98400 90762 </label>
+			</div>
+			
+			<div class="row">
+			<label class="col-sm-12 col-md-12">If you have any queries kindly write to - vedavyasar12@gmail.com</label>
+		 <label class="col-sm-12 col-md-12">Follow us on our Facebook page <a href="https://www.facebook.com/VedaVyasar-1437227356579511/" target="_blank" style="text-decoration: underline;" title="Click on the link to go to our faceboook page.">VedaVyasar</a></label>  
+			
+			</div>
+			
+	
+			</div>
+				</div>
+			
+
+</div>
+
+	
+		
+	
+	<div class="col-sm-12" style="height:20px"></div>
+	<div class="col-sm-12">
+
+	</div>
+	<div class="col-sm-12" style="color:maroon;">
+		<label class="control-label col-sm-4 col-sm-offset-4" style="font-size:25px">Registration Form</label>
+	</div>
+	<div class="col-sm-12 blink_me" >
+		<label class="control-label col-sm-8 col-md-6 col-sm-offset-3 col-md-offset-3" style="font-size:15px"> Kindly make sure pop-up blocker is disabled in your browser.</label>
+	</div>
+	<div class="col-sm-12" style="color:maroon;">
+	<div class="col-sm-12">
+	
+	<form class="form-horizontal" role="form"  id="registrationForm" data-toggle="validator"
+	 novalidate=true>
+ <fieldset class="holder col-sm-12">
+	<div class="form-group"> 
+  
+    <label class="control-label col-sm-3" for="name">Name: <sub>*</sub></label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" pattern="[A-Za-z. ]{1,100}" data-error="Please enter a valid name" required >
+    </div>
+    <div class="help-block with-errors" ></div>
+  </div>
+    <div class="form-group"> 
+   <!--  <div class="col-sm-12" style="text-align:center"><p style="font-weight:bold">Note: If you are manually typing DOB ensure you type '/' after date & month. Kindly follow dd/mm/yy format.</p></div> -->
+    <label class="control-label col-sm-3" for="dob">DOB: <sub>*</sub></label>
+    <div class="col-sm-4">
+      
+                <div class='input-group date' id='datepicker'>
+                    <input type='text' id="dob"class="form-control"  data-error="Please enter a valid /select date" autocomplete="off" required placeholder="dd/mm/yyyy"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            <p style="font-weight:bold">Note: If you are manually typing DOB ensure you type '/' after date & month. Kindly follow dd/mm/yy format.</p>
+    </div>
+    <div class="help-block with-errors" ></div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="email">Email: <sub>*</sub></label>
+    <div class="col-sm-4">
+      <input type="email" class="form-control" id="email" placeholder="Enter email"  data-error="Please enter a valid Email" required>
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="mobNo">Primary Mobile No: / Landline <sub>*</sub></label>
+    <div class="col-sm-4"> 
+      <input type="tel" class="form-control" id="mobNo"  maxlength= "10" placeholder="Enter Mobile / Landline Number"  pattern="^(\d{8})(\d{2})?$"  data-error="Please enter a valid mobile / landline Number" required>
+ <p style="font-weight:bold">Note: Enter Landline only if you dont have Mobile Number.</p>
+    </div>
+     
+     <div class="help-block with-errors" ></div>
+  </div>
+ 
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="mobNo">Do you use WhatsApp:<sub>*</sub></label>
+    <div class="col-sm-1 radio"> 
+      <label><input type="radio" name="whatsApp" required value="yes" data-error="Please Select One Option" >Yes</label>
+    </div>
+    <div class="col-sm-1 radio"> 
+      <label><input type="radio" name="whatsApp" required value="no" >No</label>
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div>
+
+<div class="form-group cityDiv">
+    <label class="control-label col-sm-3" for="city" id="cityLbl"> City: <sub>*</sub></label>
+    <div class="col-sm-4"> 
+<select id="city" class="form-control"   data-error="Please select a city" required>
+<option value="">Select a City</option>
+<option value="Chennai">Chennai</option>
+ <option value="Bengaluru">Bengaluru</option>
+ <option value="Hyderabad">Hyderabad</option>
+ <option value="Trivandrum">Trivandrum</option>
+ <option value="Thrissur">Thrissur</option>
+</select>
+
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div>
+
+
+
+ <div class="form-group  areaDiv">
+    <label class="control-label col-sm-3" for="area" id="areaLbl"> Area: <sub>*</sub></label>
+    <div class="col-sm-4"> 
+      <select id="area" class="form-control"   data-error="Please select a area" required>
+      <option value="">Select an Area</option>
+       </select>
+     </div>
+ <div class="help-block with-errors" style="display:none"></div> 
+   
+    <div class="col-sm-5 checkbox form-group">
+      <label class="control-label"><input type="checkbox" id="areaCheck" onchange="showEnterArea(event)"> Click on the checkbox if your area is not on the list</label>
+    </div> 
+   
+  </div>
+    <div class="form-group displayNone enteredAreaDiv">
+     <label class="control-label col-sm-3 " > Enter a Area: <sub>*</sub></label>
+      <div class="col-sm-4"> 
+      <input type="text" class="form-control" id="enteredArea" placeholder="Enter an Area" pattern="[a-zA-Z ]{3,40}" data-error="Please enter an area">
+    </div>
+    <div class="help-block with-errors" ></div>
+  </div>
+  
+</fieldset>
+  <fieldset class="holder col-sm-12">
+    <div class="form-group">
+    <label class="control-label col-sm-3">Occupation: <sub>*</sub></label>
+    <div class="col-sm-4">
+      <select class="form-control" id="profStatus" data-error="Please Select One Option" required>
+      <option value="">Select a Occupation</option>
+      <option value="Student">Student</option>
+      <option value="FullTime">Working Fulltime</option>
+      <option value="PartTime">Working Partime</option>
+      <option value="Homemaker">Homemaker</option>
+      <option value="Retired Others" >Retired (Others)</option>
+      <option value="Resigned Teacher/IT">Resigned (Teacher/ IT)</option>
+      </select>
+    </div>
+   <!--  <div class="col-sm-2 radio"> 
+      <label><input type="radio" required name="profStatus" value="Student" data-error="Please Select One Option" >Student</label>
+      <label><input type="radio" required name="profStatus" value="Homemaker" >Homemaker</label>
+       <!-- <label><input type="radio" required name="profStatus" value="Teacher" >Teacher</label>  -->
+   <!--  </div>
+    <div class="col-sm-2 radio"> 
+      <label><input type="radio"  required name="profStatus" value="FullTime" >Working - Full Time</label>
+      <label><input type="radio" required name="profStatus" value="PartTime" >Working - Part Time</label>      
+    </div>
+   
+    <div class="col-sm-2 radio"> 
+      
+
+      <label><input type="radio" required name="profStatus" value="Retired" >Retired from Service</label>
+    </div> --> 
+      
+     
+     
+      <div class="help-block with-errors" ></div>
+  </div>
+
+
+   <div class="form-group displayNone eduLevelDiv">
+    
+  </div>
+  <div class="form-group displayNone eduSchoolDetailsDiv">
+     
+  </div> 
+    <div class="form-group displayNone eduAddDetailsDiv">
+     
+  </div>     
+  <div class="form-group">
+    <label class="control-label col-sm-3">Marital Status: <sub>*</sub></label>
+    <div class="col-sm-1 radio"> 
+      <label><input type="radio" required name="maritalStatus" value="Single" data-error="Please Select One Option" >Single</label>
+    </div>
+    <div class="col-sm-1 radio"> 
+      <label><input type="radio"  required name="maritalStatus" value="Married" >Married</label>
+    </div>
+   
+     
+      <div class="help-block with-errors" ></div>
+  </div>
+<div class="form-group">
+  <label class="control-label col-sm-3">Areas of Interest:</label>
+  <div class="col-sm-4"><input type="text" id="aoi" class="form-control" placeholder="Enter Area of Interest (Music, Dance, Crafts etc)" ></div>
+</div>
+ </fieldset>
+  <fieldset class="holder col-sm-12">
+   <div class="form-group">
+     <label class="control-label col-sm-3 " > Veda Followed: <sub>*</sub></label>
+      <div class="col-sm-4"> 
+       <select class="form-control" id="veda" required data-error="Please select a veda">
+      <option value="">Select a Veda</option>
+      <option value="Rig Veda">Rig Veda</option>
+      <option value="Shukla Yajur Veda">Shukla Yajur Veda</option>
+      <option value="Krishna Yajur Veda">Krishna Yajur Veda</option>
+      <option value="Sama Veda">Sama Veda</option>
+      <option value="Atharvana Veda">Atharvana Veda</option>
+      </select>
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div>
+    <div class="form-group">
+     <label class="control-label col-sm-3 " > Gotra (Thrayarisheya Pravaranvitha): <sub>*</sub></label>
+      <div class="col-sm-4"> 
+       <select class="form-control selectpicker dropdown" dropupAuto=false  id="gotra" data-live-search="true"  onchange ="removeError(event)">
+      <option value="">Select a Gotra</option>
+      
+<optgroup label="Brugu (Briku)">
+<option value=" Jamadagni Bhargava- Syavana- Aabnavaana - Thrayarisheya- pravaranvitha"> Jamadagni Bhargava- Syavana- Aabnavaana - Thrayarisheya- pravaranvitha</option>
+- <option value=" Jaabaali Bhargava- Vaithahavya- Raivasa - Thrayarisheya- pravaranvitha"> Jaabaali Bhargava- Vaithahavya- Raivasa - Thrayarisheya- pravaranvitha</option>
+- <option value=" Jaamadagnya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha"> Jaamadagnya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha</option>
+- <option value=" Jaimini Bhargava- Vaithahavya- Raivasa - Thrayarisheya- pravaranvitha"> Jaimini Bhargava- Vaithahavya- Raivasa - Thrayarisheya- pravaranvitha</option>
+- <option value=" Bhaulathsya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha"> Bhaulathsya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha</option>
+- <option value=" Maandookeya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha"> Maandookeya Bhargava- Aurva- jamadagnya - Thrayarisheya- pravaranvitha</option>
+- <option value=" Maunabhargava Bhargava- Vaithahavya- Saavethasa - Thrayarisheya- pravaranvitha"> Maunabhargava Bhargava- Vaithahavya- Saavethasa - Thrayarisheya- pravaranvitha</option>
+- <option value=" Vathoola Bhargava- Vaithahavya- Saavethasa - Thrayarisheya- pravaranvitha"> Vathoola Bhargava- Vaithahavya- Saavethasa - Thrayarisheya- pravaranvitha</option>
+- <option value=" Srivathsa Bhargava- Syavana- Aapnavana- Aurva- Jamadagya - Pancharisheya- pravaranvitha"> Srivathsa Bhargava- Syavana- Aapnavana- Aurva- Jamadagya - Pancharisheya- pravaranvitha</option>
+- <option value=" Garthsamatha Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha"> Garthsamatha Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha</option>
+- <option value=" Kanaka Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha"> Kanaka Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha</option>
+- <option value=" Yagnjapathi Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha"> Yagnjapathi Bhargava- Garthsamatha - Dvayarisheya- pravaranvitha</option>
+- <option value=" Avada Bhargava- Aurva- Jamadagnya - Thrayarsheya- pravaranvitha"> Avada Bhargava- Aurva- Jamadagnya - Thrayarsheya- pravaranvitha</option>
+- <option value=" AartishENa Bhargava- AarttisheNa- AnUpa - Thrayarsheya pravaranvitha"> AartishENa Bhargava- AarttisheNa- AnUpa - Thrayarsheya pravaranvitha</option>
+- <option value=" Aaswalaayana Bhargava- Vaadhyaksha- Daivadaasa - Thrayarsheya- pravaranvitha"> Aaswalaayana Bhargava- Vaadhyaksha- Daivadaasa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kasyapi Bhargava- Vaidahvya- Saavethasa - Thrayarsheya- pravaranvitha"> Kasyapi Bhargava- Vaidahvya- Saavethasa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kaathyaayana Bhargava- AartishENa- AnUpa - Thrayarsheya- pravaranvitha"> Kaathyaayana Bhargava- AartishENa- AnUpa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kaargya Bhargava- Vaithahavya- Revasa - Thrayarsheya- pravaranvitha"> Kaargya Bhargava- Vaithahavya- Revasa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kruthsamatha Bhargava- Saunahothra- Gaarthsamatha - Thrayarsheya- pravaranvitha"> Kruthsamatha Bhargava- Saunahothra- Gaarthsamatha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Nairruthi Bhargava- AartishENa- AnUpa - Thrayarsheya- pravaranvitha"> Nairruthi Bhargava- AartishENa- AnUpa - Thrayarsheya- pravaranvitha</option>
+</optgroup>
+<optgroup label="Aangirasa">
+- <option value="Uthasatha (Uthathya) Aangirasa- Audathya- Gauthama - Thrayarsheya- pravaranvitha">Uthasatha (Uthathya) Aangirasa- Audathya- Gauthama - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kamyaangirasa Aangirasa- Aamahaavya- Aurushaaya - Thrayarsheya- pravaranvitha"> Kamyaangirasa Aangirasa- Aamahaavya- Aurushaaya - Thrayarsheya- pravaranvitha</option>
+- <option value=" GaargEya Aangirasa- Gaargya- Chaithya - Thrayarsheya- pravaranvitha"> GaargEya Aangirasa- Gaargya- Chaithya - Thrayarsheya- pravaranvitha</option>
+- <option value=" GaargEya Aangirasa- Bhaarhaspathya- Bharatheevaja- Sainya- Gargya - Pancharsheya pravaranvitha"> GaargEya Aangirasa- Bhaarhaspathya- Bharatheevaja- Sainya- Gargya - Pancharsheya pravaranvitha</option>
+- <option value=" Gauthama Aangirasa- Aayarsaya- Gauthama - Thrayarsheya- pravaranvitha"> Gauthama Aangirasa- Aayarsaya- Gauthama - Thrayarsheya- pravaranvitha</option>
+- <option value=" Paurukuthsa Aangirasa- Paurukuthsa- Thraasathasya - Thrayarsheya- pravaranvitha"> Paurukuthsa Aangirasa- Paurukuthsa- Thraasathasya - Thrayarsheya- pravaranvitha</option>
+- <option value=" PaatharaayaNa Aangirasa- Paurukuthsa- Thraasathasya - Thrayarsheya- pravaranvitha"> PaatharaayaNa Aangirasa- Paurukuthsa- Thraasathasya - Thrayarsheya- pravaranvitha</option>
+- <option value=" Mauthgalya Aangirasa- Ambarisha- Mauthgalya - Thrayarsheya- pravaranvitha"> Mauthgalya Aangirasa- Ambarisha- Mauthgalya - Thrayarsheya- pravaranvitha</option>
+- <option value=" Bharatwaja Aangirasa- Bhaarhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha"> Bharatwaja Aangirasa- Bhaarhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha</option>
+- <option value=" Mauthgalya Aangirasa- Bhargyasva- Mauthgalya - Thrayarsheya- pravaranvitha"> Mauthgalya Aangirasa- Bhargyasva- Mauthgalya - Thrayarsheya- pravaranvitha</option>
+- <option value=" Ratheethara Aangirasa- Vairoopa- Raatheethara - Thrayarsheya- pravaranvitha"> Ratheethara Aangirasa- Vairoopa- Raatheethara - Thrayarsheya- pravaranvitha</option>
+- <option value=" Vishnuvruththa Aangirasa- Pauruguthsa- Thraasathasya - Thrayarsheya- pravaranvitha"> Vishnuvruththa Aangirasa- Pauruguthsa- Thraasathasya - Thrayarsheya- pravaranvitha</option>
+- <option value=" ShatamarshNa Aangirasa- Thraasathasya- Pauruguthsa - Thrayarsheya- pravaranvitha"> ShatamarshNa Aangirasa- Thraasathasya- Pauruguthsa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Sankruthi Saathya- Saankruthya- Gauriveetha - Thrayarsheya- pravaranvitha"> Sankruthi Saathya- Saankruthya- Gauriveetha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Sankruthi Aangirasa- Saaskruthya- Gauriveetha - Thrayarsheya- pravaranvitha"> Sankruthi Aangirasa- Saaskruthya- Gauriveetha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Haritha Aangirasa- Ambarisha- Yauvanaachva - Thrayarsheya- pravaranvitha"> Haritha Aangirasa- Ambarisha- Yauvanaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Aabasthamba Aangirasa- Bharhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha"> Aabasthamba Aangirasa- Bharhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha</option>
+- <option value=" Aayaasya Aangirassa- Aayaasya- Gauthama - Thrayarsheya- pravaranvitha"> Aayaasya Aangirassa- Aayaasya- Gauthama - Thrayarsheya- pravaranvitha</option>
+- <option value=" KaNva Aangirasa- Ajameeta- KaaNva - Thrayarsheya- pravaranvitha"> KaNva Aangirasa- Ajameeta- KaaNva - Thrayarsheya- pravaranvitha</option>
+- <option value=" KaNva Aangirasa- Aamaheeyava- Aurukshyasa - Thrayarsheya- pravaranvitha"> KaNva Aangirasa- Aamaheeyava- Aurukshyasa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kabila Aangirasa- Aamaheeyava- Aurukshyasa - Thrayarsheya- pravaranvitha"> Kabila Aangirasa- Aamaheeyava- Aurukshyasa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Garga Aangirasa- Chainya- Gargaya (Garka) - Thrayarsheya- pravaranvitha"> Garga Aangirasa- Chainya- Gargaya (Garka) - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kuthsa Aangirasa- Ambareesha- Yauvanaachva - Thrayarsheya- pravaranvitha"> Kuthsa Aangirasa- Ambareesha- Yauvanaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kuthsa Aangirasa- Maandathra- Kauthsa - Thrayarsheya- pravaranvitha"> Kuthsa Aangirasa- Maandathra- Kauthsa - Thrayarsheya- pravaranvitha</option>
+- <option value=" Kaundinya Aangirasa- Bharhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha"> Kaundinya Aangirasa- Bharhaspathya- Bharatwaja - Thrayarsheya- pravaranvitha</option>
+- <option value=" Paurukuthsa Aangirasa- Paurukuthsa- Aasathasya - Thrayarsheya- pravaranvitha"> Paurukuthsa Aangirasa- Paurukuthsa- Aasathasya - Thrayarsheya- pravaranvitha</option>
+- <option value=" Lohitha Aangirasa- Vaichvamitra- Lohitha - Thrayarsheya- pravaranvitha"> Lohitha Aangirasa- Vaichvamitra- Lohitha - Thrayarsheya- pravaranvitha</option>
+</optgroup>
+
+<optgroup label="Aathri" >
+- <option value="Aathreya Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha">Aathreya Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Mauthgalya Aathreya- Aarsanaanasa- Baurvaathitha - Thrayarsheya- pravaranvitha"> Mauthgalya Aathreya- Aarsanaanasa- Baurvaathitha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Athri Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha"> Athri Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Uthaalaka Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha"> Uthaalaka Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Muthkala Aathreya- Aarsanaanasa- Baurvaathitha - thrayarsheya- pravaranvitha"> Muthkala Aathreya- Aarsanaanasa- Baurvaathitha - thrayarsheya- pravaranvitha</option>
+- <option value=" Gauriveetha Aathreya- Aarsanaanasa- Baurvaathitha - thrayarsheya- pravaranvitha"> Gauriveetha Aathreya- Aarsanaanasa- Baurvaathitha - thrayarsheya- pravaranvitha</option>
+- <option value=" Dattathreya Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha"> Dattathreya Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Dhananjaya Aathreya- Aarsanaanasa- Kaavishtira - Thrayarsheya- pravaranvitha"> Dhananjaya Aathreya- Aarsanaanasa- Kaavishtira - Thrayarsheya- pravaranvitha</option>
+- <option value=" Dhaksha ( Dakshi) Aathreya- Kaavishtira- Bhaurvathitha - Thrayarsheya- pravaranvitha"> Dhaksha ( Dakshi) Aathreya- Kaavishtira- Bhaurvathitha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Bhaaleya Aathreya- Vaamarathya- Bauthrika - Thrayarsheya- pravaranvitha"> Bhaaleya Aathreya- Vaamarathya- Bauthrika - Thrayarsheya- pravaranvitha</option>
+- <option value=" Pathanjala Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha"> Pathanjala Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+- <option value=" Bheejaavaaba Aathreya- Aarsanaanasa- Aadhitha - Thrayarsheya- pravaranvitha"> Bheejaavaaba Aathreya- Aarsanaanasa- Aadhitha - Thrayarsheya- pravaranvitha</option>
+- <option value=" Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha"> Aathreya- Aarsanaanasa- syaavaachva - Thrayarsheya- pravaranvitha</option>
+</optgroup>
+
+
+
+
+<optgroup label="Vishwamitra" >
+- <option value=" Kausika (Kusika) Vaiswamithra- AagamarshaNa- Kausika - Thrayarsheya"> Kausika (Kusika) Vaiswamithra- AagamarshaNa- Kausika - Thrayarsheya</option>
+- <option value=" Lohitha Vaiswamithra- Ashtaka- Lohitha - Thrayarsheya"> Lohitha Vaiswamithra- Ashtaka- Lohitha - Thrayarsheya</option>
+- <option value=" Viswamithra Vaiswamithra- Devaraatha- Authala - Thrayarsheya"> Viswamithra Vaiswamithra- Devaraatha- Authala - Thrayarsheya</option>
+- <option value=" Saalaavatha Vaiswamithra- Devaraatha- Authala - Thrayarsheya"> Saalaavatha Vaiswamithra- Devaraatha- Authala - Thrayarsheya</option>
+- <option value=" Kadhaka Vaiswamithra- Kadhaka - Dhwayarsheya"> Kadhaka Vaiswamithra- Kadhaka - Dhwayarsheya</option>
+- <option value=" AagamarshaNa Vaiswamithra- AagamarshaNa- Kausika - Thrayarsheya"> AagamarshaNa Vaiswamithra- AagamarshaNa- Kausika - Thrayarsheya</option>
+- <option value=" Gatha Vaiswamithra- Maaduchandasa- Aaja - Thrayarsheya"> Gatha Vaiswamithra- Maaduchandasa- Aaja - Thrayarsheya</option>
+- <option value=" Kaathyaayana Vaiswamithra- Kathya- Adgeetha - Thrayarsheya"> Kaathyaayana Vaiswamithra- Kathya- Adgeetha - Thrayarsheya</option>
+- <option value=" Kamakaayana Vaiswamithra- Devaseevarasa- DaivaTharasa (Rethasa) - Thrayarsheya"> Kamakaayana Vaiswamithra- Devaseevarasa- DaivaTharasa (Rethasa) - Thrayarsheya</option>
+- <option value=" Kaalava Vaiswamithra- Devaraatha- Audhala - Thrayarsheya"> Kaalava Vaiswamithra- Devaraatha- Audhala - Thrayarsheya</option>
+- <option value=" Kausika Vaiswamithra- Salangayana- Kausika - Thrayarsheya"> Kausika Vaiswamithra- Salangayana- Kausika - Thrayarsheya</option>
+- <option value=" Jabhala (Jabali) Vaiswamithra- Devaraatha- Audhala - Thrayarsheya"> Jabhala (Jabali) Vaiswamithra- Devaraatha- Audhala - Thrayarsheya</option>
+- <option value=" Devaraatha Vaiswamithra- Devaraatha- Aulitha - Thrayarsheya"> Devaraatha Vaiswamithra- Devaraatha- Aulitha - Thrayarsheya</option>
+
+</optgroup>
+
+
+
+<optgroup label="Vashista" >
+- <option value=" Kaundinya Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya"> Kaundinya Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya</option>
+- <option value=" Parasara Vaasishta- saakthya- Paarasarya - Thrayarsheya"> Parasara Vaasishta- saakthya- Paarasarya - Thrayarsheya</option>
+- <option value=" Vaasishta Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya"> Vaasishta Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya</option>
+- <option value=" Vasishta Vaasishta - Ekarsheya"> Vasishta Vaasishta - Ekarsheya</option>
+- <option value=" Haritha Vaasishta - Ekarsheya"> Haritha Vaasishta - Ekarsheya</option>
+- <option value=" Aachvalaayana Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya"> Aachvalaayana Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya</option>
+- <option value=" Upamanyu Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya"> Upamanyu Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya</option>
+- <option value=" KaaNva Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya"> KaaNva Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya</option>
+- <option value=" JaadhookarNya Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya"> JaadhookarNya Vaasishta- Aindrapramatha- Aabarathvasasya - Thrayarsheya</option>
+- <option value=" Bhodayana Vaasishta- Aathreya- JaadhookarNya - Thrayarsheya"> Bhodayana Vaasishta- Aathreya- JaadhookarNya - Thrayarsheya</option>
+- <option value=" MithraavaruNa Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya"> MithraavaruNa Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya</option>
+- <option value=" Mauthgala Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya"> Mauthgala Vaasishta- MaithravaruNa- Kaundinya - Thrayarsheya</option>
+- <option value=" Vaasida Vaasishta- Aindrapramatha- Aaabarathvasasya - Thrayarsheya"> Vaasida Vaasishta- Aindrapramatha- Aaabarathvasasya - Thrayarsheya</option>
+
+</optgroup>
+
+
+
+
+<optgroup label="Kachyapa/Kasyapa" >
+- <option value=" Naithruva Kasyapa Kaasyapa- Aavathsaara- Naithruva - Thrayarsheya"> Naithruva Kasyapa Kaasyapa- Aavathsaara- Naithruva - Thrayarsheya</option>
+- <option value=" Reba Kasyapa Kaasyapa- Aavathsaara- Rebaa - Thrayarsheya"> Reba Kasyapa Kaasyapa- Aavathsaara- Rebaa - Thrayarsheya</option>
+- <option value=" Saandilya Kaasyapa- Aavathsaara- Saandilya - Thrayarsheya"> Saandilya Kaasyapa- Aavathsaara- Saandilya - Thrayarsheya</option>
+- <option value=" Saandilya Kasyapa- Daivala- Asitha - Thrayarsheya"> Saandilya Kasyapa- Daivala- Asitha - Thrayarsheya</option>
+- <option value=" Saandilya Kaasyapa- Aavathsaara- Naithruva- Reba- Raiba- Sandila- Chandilya - Sapthaarsheya"> Saandilya Kaasyapa- Aavathsaara- Naithruva- Reba- Raiba- Sandila- Chandilya - Sapthaarsheya</option>
+- <option value=" Kaasyapa Kaasyapa- Aasitha- Daivala - Thrayarsheya"> Kaasyapa Kaasyapa- Aasitha- Daivala - Thrayarsheya</option>
+- <option value=" Kachyapa Kaasyapa- Aavathsaara- Naithruva- Reba- Raiba- Sandila- Chandilya - Sapthaarsheya"> Kachyapa Kaasyapa- Aavathsaara- Naithruva- Reba- Raiba- Sandila- Chandilya - Sapthaarsheya</option>
+- <option value=" Bruku Kaasyapa- Aavathsaara- Naithrava - Thrayarsheya"> Bruku Kaasyapa- Aavathsaara- Naithrava - Thrayarsheya</option>
+- <option value=" Maareesa Kaasyapa- Aavathsaara- Naithrava - Thrayarsheya"> Maareesa Kaasyapa- Aavathsaara- Naithrava - Thrayarsheya</option>
+- <option value=" Raibya (Reba) Kaasyapa- Aavathsaara- Raibya - Thrayarsheya"> Raibya (Reba) Kaasyapa- Aavathsaara- Raibya - Thrayarsheya</option>
+- <option value=" Baukakshi Kaasyapa- Aavathsaara- Aasitha - Thrayarsheya"> Baukakshi Kaasyapa- Aavathsaara- Aasitha - Thrayarsheya</option>
+- <option value=" Vaathsya Kaasyapa- Aavathsaara- Raibya - Thrayarsheya"> Vaathsya Kaasyapa- Aavathsaara- Raibya - Thrayarsheya</option>
+- <option value=" Kaasyapa- Aavathsaara- Aasitha - Thrayarsheya"> Kaasyapa- Aavathsaara- Aasitha - Thrayarsheya</option>
+- 
+</optgroup>
+
+
+
+
+<optgroup label="Agasthya " >
+
+<option value="Agasthya Agasthya - Ekarisheya- pravaranvitha">Agasthya Agasthya - Ekarisheya- pravaranvitha</option>
+- <option value=" Idhmavaaha Agasthya - Ekarisheya- Pravaranvitha"> Idhmavaaha Agasthya - Ekarisheya- Pravaranvitha</option>
+- <option value=" Aagasthi Agasthya- Maahendra- Maayobhuva - Thryarisheya- pravaranvitha"> Aagasthi Agasthya- Maahendra- Maayobhuva - Thryarisheya- pravaranvitha</option>
+- <option value=" Agasthi Agasthya- Dhradyavrutha- Aidhmavaaha - Thrayarisheya- pravaranvitha"> Agasthi Agasthya- Dhradyavrutha- Aidhmavaaha - Thrayarisheya- pravaranvitha</option>
+- <option value=" Idhmavaaha Agasthya- Vaathyasva- Aidhmavaaha - thrayarisheya- pravaranvitha"> Idhmavaaha Agasthya- Vaathyasva- Aidhmavaaha - thrayarisheya- pravaranvitha</option>
+- <option value=" Pulaha Agasthya- Maahendra- Maayobhuva - Thrayarisheya- pravaranvitha"> Pulaha Agasthya- Maahendra- Maayobhuva - Thrayarisheya- pravaranvitha</option>
+- <option value=" Maayobhuva Agasthya- Maahendra- Maayobhuva - Thrayarisheya- pravaranvitha"> Maayobhuva Agasthya- Maahendra- Maayobhuva - Thrayarisheya- pravaranvitha</option>
+      </optgroup>
+      </select>
+    </div>
+    <div class="col-sm-1">
+    <p></p>
+    <a  href="#" data-toggle="tooltip" data-original-title="Type in your Gotra to get the corresponding Thrayarisheya- pravaranvitha." onclick="linkOnClick(event)">Help</a>
+</div>
+    <div class=" gotraError" ></div>
+  </div>
+  <div class="form-group">
+  <label class="control-label col-sm-3"> Select Your Soothram: <sub>*</sub></label>
+  <div class="col-sm-4">
+  	<select id="soothram" class="form-control" required data-error="Please select a soothram">
+  	<option value="">Select a Soothram</option>
+  	<option value="Aapasthamba-Yajur">Aapasthamba-Yajur </option>
+  	<option value="Bodayana-Yajur">Bodayana-Yajur</option>
+  	<option value="Asvalayana-Rig">Asvalayana-Rig</option>
+  	<option value="Dhrahyayana-Samam">Dhrahyayana-Samam</option>	
+  	</select>
+  </div>
+  <div class="help-block with-errors" ></div>
+  </div>
+
+
+     <div class="form-group">
+    <label class="control-label col-sm-3">Kuladeivam Koil:<sub>*</sub></label>
+     <div class="col-sm-4">
+      <input type="text" class="form-control" id="kulaDeivam" placeholder="Enter Kuladeivam Koil"  pattern="[A-Za-z.,() ]{1,1000}" data-error="Please enter a valid Koil Name" required >
+    </div>
+     <div class="help-block with-errors" ></div>  
+  </div>
+
+     <div class="form-group">
+    <label class="control-label col-sm-3">Poorvigam(Native Village/Town/City):<sub>*</sub></label>
+     <div class="col-sm-4">
+      <input type="text" class="form-control" id="native" placeholder="Enter Poorvigam/ Native Place"   pattern="[A-Za-z.,() ]{1,1000}" data-error="Please enter a Native Place " required >
+    </div>
+     <div class="help-block with-errors" ></div>  
+  </div>
+
+</fieldset>
+<fieldset class="holder col-sm-12">
+   <div class="form-group">
+
+      <label class="control-label col-sm-3" > Kids / Siblings:<sub>*</sub></label>
+    <div class="col-sm-4">
+      
+    <select class="form-control" id="siblings" required data-error="Please select a option " >
+      <option value ="">Select one Option</option>
+      <option value="No Siblings/ Kids" >No Siblings/ Kids</option>
+      <option value="1 Sibling/Kid">1 Sibling/Kid</option>
+      <option value="2 Siblings/Kids">2 Siblings/Kids</option>
+      <option value="3 Siblings/Kids">3 Siblings/Kids</option>
+      <option value="4 Siblings/Kids">4 Siblings/Kids</option>
+    </select>
+<p style="font-weight:bold"  >Note: Kids / Sibling represents your kids or brothers/sisters of the registering kid.</p>
+    </div>
+    <div class="help-block with-errors" ></div>  
+
+    
+    
+   </div>
+<!--   <div class="form-group">
+    <label class="control-label col-sm-3" >Workshop Duration:<sub>*</sub></label>
+    <div class="col-sm-8 "> 
+      <label class="control-label">Two days. Attendance Mandatory on both the days.</label>
+    </div>
+    
+     
+  </div>-->
+
+    <div class="form-group displayNone accomdationDiv">
+    
+    </div>
+    <div class="form-group">
+    <label class="control-label col-sm-3">Type of Internet Connection: <sub>*</sub></label>
+    <div class="col-sm-4 ">
+    	<select class="form-control" id="internetType" required data-error="Please select a connection type.">
+    	<option value="">Select a Internet Connection Type</option>
+    		<option value="WIFI">WIFI</option>
+    		<option value="Data Card">Data Card</option>
+    		<option value="Broadband">Broadband</option>
+    		<option value="Fibre Optic">Fibre Optic</option>
+    	</select>
+
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div>
+
+
+
+    <div class="form-group displayNone internetSpeedDiv">
+    
+    </div>
+
+  </fieldset>
+
+  
+  <div class="form-group btnHolder"> 
+    <div class="col-md-offset-3 col-sm-2 col-md-2 col-xs-4">
+      <input type="submit" class="btn btn-primary form-control" id="submitBtn" value="Submit">
+    </div>
+     <div class=" col-sm-2 col-md-2 col-xs-4">
+      <input type="button" class="btn btn-primary form-control" onclick="resetForm()" value="Reset">
+    </div>
+    <div class=" col-sm-2 col-md-2 col-xs-4 ">
+      <input type="button" class="btn btn-primary form-control" data-backdrop="static" data-keyboard="false" data-toggle="modal" href="#faqModel" value="FAQ's">
+    </div>
+    <div class="col-sm-offset-4 col-sm-2 col-md-1 displayNone">
+      <a  class="btn btn-primary"  id="modalBtn" data-toggle="modal" href="#myModal" data-backdrop="static" data-keyboard="false">modalBtn</a>
+    </div>
+    <div class="col-sm-offset-4 col-sm-2 col-md-1 displayNone">
+      <a  class="btn btn-primary"  id="cBtn" data-toggle="modal" href="#confirmAlert" data-backdrop="static" data-keyboard="false">alertbtn</a>
+    </div>
+
+    <div class="col-sm-offset-4 col-sm-2 col-md-1 displayNone">
+      <a  class="btn btn-primary"  id="alertBtn" data-toggle="modal" href="#errorAlert" data-backdrop="static" data-keyboard="false">alertbtn</a>
+    </div>
+    
+
+  </div>
+
+</form>
+	</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
