@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GKVS - Veda Classes</title>
+	<title>Igniting Change</title>
 	<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
 	<script type="text/JavaScript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
   <meta name="viewport" content="width=device-width" />
@@ -27,7 +27,7 @@
 
 
 
-	     var name,date,email,mobNo,city,area,maritalStatus,veda,gotra,soothram,whatsAppUser,profStatus,eduLevel,fos,internetType,internetSpeed,workshopPref,accomadation,kulaDeivam,nativePlace,collegeName,aoi,sibling;
+	     var name,date,email,mobNo,area,maritalStatus,veda,gotra,soothram,whatsAppUser,profStatus,eduLevel,fos,internetType,internetSpeed,workshopPref,accomadation,kulaDeivam,nativePlace,collegeName,aoi,sibling;
 	   
 	     function postContactToGoogle() {
            
@@ -35,10 +35,10 @@
            
 
                 $.ajax({
-                    url: "https://docs.google.com/forms/d/e/1FAIpQLSdDqZgJO7r7Y8l7e46d0jGiOEjGG-3qF43QbPJJe_6UQvMsEQ/formResponse",
-                    data: { "entry.85470744": name,"entry.969531295":date,"entry.1467940298":email,"entry.515026237":mobNo,"entry.1855826998":area,"entry.409989214":city,"entry.2122372146":maritalStatus,"entry.1898121325":veda,"entry.788716573":gotra,"entry.1101121099":soothram,"entry.500760621":whatsAppUser,"entry.1458163140":profStatus,"entry.2021461724":eduLevel,"entry.1595372031":fos,"entry.1023943413":internetType,"entry.535602352":internetSpeed,"entry.29175886":kulaDeivam,"entry.513130827":collegeName,"entry.158565975":aoi,"entry.1358827977":nativePlace,"entry.282256031":sibling},
+                    url: "https://docs.google.com/forms/d/1FgLjP5Q7kVnBQxorg8WAKZVDrB9rPAYOaG-MkJ1SeQM/formResponse",
+                    data: { "entry.1106568099": name,"entry.748229054":date,"entry.462981155":email,"entry.1309463032":mobNo,"entry.913886073":area,"entry.1151623237":maritalStatus,"entry.1457306647":veda,"entry.293410982":gotra,"entry.2068066637":soothram,"entry.2030463963":whatsAppUser,"entry.826506145":profStatus,"entry.284998021":eduLevel,"entry.42686957":fos,"entry.237834336":internetType,"entry.324380684":internetSpeed,"entry.1882084151":kulaDeivam,"entry.313619687":collegeName,"entry.394252196":aoi,"entry.105421523":nativePlace,"entry.1112667205":sibling},
                     type: "POST",
-                    dataType: "json",
+                    dataType: "xml",
 			crossdomain:true,			
                     statusCode: {
                         0: function () {
@@ -128,7 +128,6 @@
         	name=$('#name').val();
         	email=$('#email').val();
         	mobNo=$('#mobNo').val();
-          city=$('#city').val();
         	area=$('#area').val()?$('#area').val():$('#enteredArea').val();
         	
         	veda=$('#veda').val();
@@ -175,28 +174,6 @@
         	
         }
         $(document).ready(function(){
-
-
-var chennaiString="Adambakkam,Adyar,Alandur,Alwarpet,Alwarthirunagar,Ambattur,Aminjikarai,Anakaputhur,Anna Nagar,Annanur,Arumbakkam,Ashok Nagar,Avadi,Ayanavaram,Besant Nagar,Basin Bridge,Chepauk,Chetput,Chintadripet,Chitlapakkam,Choolai,Choolaimedu,Chrompet,Egmore,Ekkaduthangal,Ennore,Foreshore Estate,Fort St. George,George Town,Gopalapuram,Government Estate,Guindy,IIT Madras,Injambakkam,ICF,Iyyapanthangal,Jafferkhanpet,Karapakkam,Kattivakkam,Kazhipattur,K.K. Nagar,Keelkattalai,Kelambakkam,Kilpauk,Kodambakkam,Kodungaiyur,Kolathur,Korattur,Korukkupet,Kottivakkam,Kotturpuram,Kottur,Kovalam,Kovilambakkam,Koyambedu,Kundrathur,Madhavaram,Madhavaram Milk Colony,Madipakkam,Madambakkam,Maduravoyal,Manali,Manali New Town,Manapakkam,Mandaveli,Mangadu,Mannadi,Mathur,Medavakkam,Meenambakkam,MGR Nagar,Minjur,Mogappair,MKB Nagar,Mount Road,Moolakadai,Moulivakkam,Mugalivakkam,Mudichur,Mylapore,Nandanam,Nanganallur,Navalur,Neelankarai,Nemilichery,Nesapakkam,Nolambur,Noombal,Nungambakkam,Otteri,Padi,Pakkam,Palavakkam,Pallavaram,Pallikaranai,Pammal,Park Town,Parry's Corner,Pattabiram,Pattaravakkam,Pazhavanthangal,Peerkankaranai,Perambur,Peravallur,Perumbakkam,Perungalathur,Perungudi,Pozhichalur,Poonamallee,Porur,Pudupet,Purasaiwalkam,Puthagaram,Puzhal,Puzhuthivakkam,Raj Bhavan,Ramavaram,Red Hills,Royapettah,Royapuram,Saidapet,Saligramam,Santhome,Sembakkam,Selaiyur,Shenoy Nagar,Sholavaram,Sholinganallur,Sithalapakkam,Sowcarpet,St.Thomas Mount,Tambaram,Teynampet,Tharamani,T. Nagar,Thirumangalam,Thirumullaivoyal,Thiruneermalai,Thiruninravur,Thiruvanmiyur,Tiruverkadu,Thiruvotriyur,Tirusulam,Tiruvallikeni,Tondiarpet,United India Colony,Vandalur,Vadapalani,Valasaravakkam,Vallalar Nagar,Vanagaram,Velachery,Villivakkam,Virugambakkam,Vyasarpadi,Washermanpet,West Mambalam";
-
-var bengaluruString="Sarjapur Road,Whitefield,Bannerghatta Road,Electronic City,HSR Layout,Jayanagar,JP Nagar,Hosur Road,Indira Nagar,Koramangala,Yelahanka,Hesaraghatta Main Road,Devanahalli,Marathahalli,Hebbal,Kanakapura Road,Anekal,Hennur Road,C V Raman Nagar,Kalyan Nagar,RT Nagar,Jalahalli,HRBR Layout,BTM Layout,Ramamurthy Nagar,Brooke Field,Jakkur,Dollars Colony,Abbigere,Rajanukunte,G M Palya,Kundalahalli,Madiwala,Fraser Town,Chandapur,Gottigere,Basavanagar,Nagarbhavi,Belandur,Hoskote,Chamarajpet,Richards Town,Lavelle Road,Kodigehalli,Chikkajala,Hanumanth Nagar,Akshaya Nagar,Thanisandra,Sarjapur,Hegde Nagar,Jigani Industrial Area,Mathikere,Rest House Road,Begur Road,Rajajinagar,MG Road,HBR Layout,Banaswadi,Uttarahalli,Airport Road,Thippasandra,Banashankari,Bagalur,Horamavu,KR Puram,Bommanahalli,OMBR Layout,Mysore Road,Silkboard,RMV Extension Stage,Old Madras Road,Kasturi Nagar,Tumkur Road,Richmond Road,Vidyaranyapura,Mahadevapura,Rajarajeshwari Nagar,Malleshwaram,AECS Layout,Chikkaballapur,Defence Colony,Kanaka Nagar,Hulimavu,Thyagaraj Nagar,Basaveshwaranagar,Airport Area,Kumaraswamy Layout,Sanjay Nagar,Hoskote,Kudlu Gate,RBI Layout,Palace Road,Hoodi Village,Millers Road,Huskur,Vijaya Bank Layout,Shanti Nagar,Hebbal Kempapura,Tippasandra,Naganathapura,Yeshwantpur,Jeevan Bima Nagar,Cox Town,Ulsoor,Benson Town,ITPL,Doddaballapur,Kaggadaspura,Nagwar,Attibele,Padmanabhanagar,Vijayanagar,Kengeri,Peenya,Magadi Road,NelaMangala,Sahakar Nagar,Dodballapur Road,Outer Ring Road,Vigyan Nagar,Basavanagudi,Mallesh Palaya,Domlur,Cookes Town,Old Airport Road,Bellary Road,Sadaramangala,Anjanapura,Majestic,Vasanth Nagar,Wilson Garden,ISRO Layout,HMT Layout,Nagawara,Doddaballapur Road,Central Silk Board,Nandi Hills,Ganganagar,Bommasandra,Pai Layout,Sadaramangala,Prashanth Nagar,Hennur,Raj Bhavan,Vidyanagar,Bilekahalli,Manek Chowk,Chambal River,Indraprastha";
-
-
-
-var hyderabadString ="Gachibowli,Shamshabad,Kukatpally,Mallapur,Hi Tech City,Habsiguda,Jubilee Hills,Secunderabad,Banjara Hills,Manikonda,Uppal Kalan,Ameerpet,Shamirpet,Sainikpuri,Srinagar Colony,Quthbullapur,A C Guards,A S Roa Nagar,Abids Road,Adarsh Nagar,Adikmet,Afzalgunj,Agapura,Ahmed Nagar,Akbar Road,Alexander Road,Aliabad,Alwal,Amberpet,Ameerpet X Road,Anand Bagh,Anand Nagar Colony,Ashok Nagar,Asif Nagar,Attapur,Attapur Ring Road,Auto Nagar,Azamabad,Azampura Masjid,Baber Bagh,Bachpally,Badichowdi,Bagh Amberpet,Bagh Lingampally,Bahadurpura,Bahadurpurpally,Bairamalguda,Bakaram,Bala Nagar,Balapur,Balkampet,Bandimet,Bandlaguda,Bank Street,Bansilal Pet,Bansilalpet,Bapuji Nagar,Barkas,Barkatpura,Basheerbagh,Bazarghat,Begum Bazar,Bhagya Nagar Colony,Bharat Nagar,Bhel,Bholakpur,Bk Guda,Bod Uppal,Boggulakunta,Bolaram,Borabanda,Boudha Nagar,Bowenpally,Boyiguda,Chaderghat,Chaitanyapuri,Champapet,Champapet X Road,Chanchalguda,Chanda Nagar,Chandrayanagutta,Chandrayangutta,Chappel Bazar,Chappel Road,Char Kaman,Charkaman,Charlapally,Charminar,Chatta Bazar,Cherlapally,Chikkadpally,Chilkalguda,Chintal,Chintal Basti,Chintalkunta,Chirag Ali Lane,Chudi Bazar,D D Colony,Dabeerpura,Dabeerpura North,Dar Ul Salam,Darul Shifa,Defence Colony,Devan Devdi,Dhan Bazar,Dharam Karan Road,Diamond Point,Dilshad Nagar,Dilsukhnagar Main Road,Distillery Road,Domalguda,Doodh Bowli,Dr. A.S Rao Nagar,Dwarkapuri Colony,East Anand Bagh,East Marredpally,ECIL,Ecil Post,Ecil X Roads,Edi Bazar North,Erragadda,Erramanzil,Erramanzil Colony,Esamia Bazar,Falaknuma,Fateh Darwaza,Fateh Maidan,Fateh Nagar,Feel Khana,Feroz Guda,Film Nagar,Gaddi Annaram,Gaddi Annaram X Roads,Gagan Mahal,Gagan Pahad,Gandhi Nagar,Gandhipet,Gandhipet Road,General Bazar,Ghansi Bazar,Ghasmandi,Ghatkesar,Golconda,Golconda X Roads,Gosha Mahal,Gowliguda,Gowliguda Chaman,Green Lands,Green Park Extension,Gudimalkapur,Gudimalkapur New Po,Gulzar House,Gun Foundry,Gun Rock,Gunfoundry,Hafiz Pet,Hakimpet,Hanuman Tekdi,Haribowli,Hasmatpet,Hastinapuram,Hayat Nagar,Hill Fort,Hill Fort Road,Hill Street,Himayat Nagar,Himayat Nagar X Roads,Himayat Sagar,Hmt Nagar,Hmt Road,Humayun Nagar,Hussaini Alam,Hyder Basti,Hyder Nagar,Hyderabad Central,Hyderguda,Ibrahim Bagh,Ibrahimpatnam,Inderbagh,Indira Park,Jagadgirigutta,Jagdish Market,Jahanuma,Jambagh,Jamia Osmania,Jawahar Nagar,Jawaharlal Nehru Road,Jeedimetla,Kachi,Kachiguda,Kachiguda X Road,Kakaguda,Kakatiya Nagar,Kalasiguda,Kali Kabar,Kali Kaman,Kalyan Nagar,Kamala Nagar,Kamala Puri Colony,Kamla Nagar,Kanchanbagh,Kandoji Bazar,Kapra,Karimnagar,Karkhana,Karman Ghat,Karmanghat,Karmanghat X Roads,Karvan,Karwan,Kavadiguda,Keshavagiri,Khairatabad,Kharkhana Main Road,King Koti,King Koti X Road,Kishan Bagh,Kishangunj,Kompally,Kondapur,Kothaguda,Kothapet,Kphb,Kphb Colony,Krishna Nagar,Kukatpally Colony,Kummarguda,Kundan Bagh,Kushaiguda,Kattedan,Kavadi Guda,L B Nagar,L B Stadium,L B Stadium,Lad Bazar,Lakdi Ka Pul,Lal Bazar,Lal Darwaza,Lalapet,Lallaguda,Langer House,Liberty,Lingampalli,Lingampally,Lothukunta,Lower Tank Bund Road,M G Road,Machili Kaman,Madannapet,Madhapur,Madhura Nagar,Madina,Madina Guda,Mahankali Street,Maharaj Gunj,Mahatma Gandhi Road,Mahendra Hills,Malakpet,Malakpet Extension,Malkajgiri,Mallapur,Mallapuram,Mallepally,Mallepally North,Mangal Hat,Mansurabad X Road,Market Street,Marredpally,Maruthi Colony,Maruthi Nagar,Masab Tank,Medchal,Meerpet,Mehboob Gunj,Mehboob Nagar,Mehdipatnam X Road,Mettu Guda,Minister Road,Miralam Mandi,Miyapur,Mogulpura,Moinabad,Monda Market,Moosabowli,Moosapet,Moosaram Bagh,Moosaram Bagh X Road,Moti Nagar,Moula Ali,Mozamjahi Market,Mughalpura,Muktargunj,Murad Nagar,Musheerabad,Mylargadda,Nacharam,Nagarjuna Hills,Nagarjuna Nagar,Nagarjuna Sagar Road,Nagole,Nagole X Road,Nallagutta,Nallakunta,Namala Gundu,Nampally,Nampally Station Road,Narayanaguda,Narayanguda,Nayapul,Necklace Road,Nehru Nagar,Neredmet,Neredmet Cross Road,New Bowenpally,New Boyiguda,New Malakpet,New Nagole,New Nallakunta,New Nallakunta X Road,New Osmangunj,Nimboliadda,Nizam Shahi Road,Nizamabad,Nizampet,Nizampet Road,Noor Khan Bazar,Old Alwal,Old Bowenpally,Old Boyiguda,Old Ghasmandi,Old Jail Street,Old Malakpet,Old Topkhana,Osman Shahi,Osmangunj,Osmania University,Padma Rao Nagar,Palika Bazar,Pan Bazar,Panjagutta,P And T Colony,Paradise,Paradise Circle,Parklane,Parsigutta,Patancheru,Patel Market,Pathargatti,Patny,Penderghast Road,Picket,Pot Market,Pragathi Nagar,Prakash Nagar,Prasanth Nagar,Purana Pul,Purani Haveli,Putli Bowli,R R District,Raj Bhavan Road,Rajendra Nagar,Ram Nagar,Ram Nagar X Road,Ramachandra Puram,Ramakrishna Puram,Ramakrishna Puram Road,Ramanthapur,Ramgopalpet,Ramkote,Ramnagar Gundu,Ranga Reddy Nagar,Ranigunj,Rashtrapathi Road,Rasoolpura,Red Hills,Regimental Bazar,Rethi Bowli,Rikabgunj,Risala Bazar,Rtc Colony,RTC X Road,S D Road,S P Road,S R Colony,S R Nagar,Safilguda,Sagar Road,Sai Nagar,Saidabad,Saifabad,Saleem Nagar,Sanath Nagar,Santosh Nagar,Saroor Nagar,Sebastian Road,Secretariat,Seetharambagh,Serilingampally,Shah Ali Banda,Shahpur Nagar,Shaikpet,Shahpur Nagar,Shamshergunj,Shanker Bagh,Shanker Mutt,Shanti Nagar,Shivam Road,Shivarampally,Siddarth Nagar,Siddiamber Bazar,Sikh Road,Sikh Village,Sikh Village Road,Sindhi Colony,Sitaphal Mandi,Somajiguda,Somajiguda Circle,Sri Krishna Nagar,Sri Srinivas Colony,Srinagar,Srinagar Colony Main Road,Srinivasa Colony,Srinivasa Nagar,Srinivasa Nagar Colony,St. Johns Road,St. Marys Road,Subash Road,Sultan Bazar,Surya Nagar Colony,Shapur Nagar,Shivaji Nagar,Tad Bund,Tad Bund X Road,Talab Katta,Talabkatta,Tank Bund,Tank Bund Road,Tar Bund,Tar Bund X Road,Taranagar,Tarnaka,Tilak Nagar,Tilak Road,Tobacco Bazar,Toli Chowki,Topkhana,Trimulgherry,Trimulgherry X Road,Troop Bazar,Uppal,Uppuguda,Vanasthalipuram,Vasavi Nagar,Vengal Rao Nagar,Venkatapuram,Vidyanagar,Vijay Nagar Colony,Vikas Nagar,Vikrampuri,Vikrampuri Colony,Vinayak Rao Nagar,Vithalwadi,Warasiguda,West Marredpally,Yakutpura,Yapral,Yellareddy Guda,Yellareddyguda,Yousuf Bazar,Yousufguda,Zamistanpur,Tirumalgherry,Hyderabad Airport 1,Hyder Shah Kote,Hyderabad GPO,Hyderabad Jubilee HO,Hyderabad Public School,I.E.Nacharam,I.M.Colony,Ibrahim Bagh Lines,Ie Moulali,IICT,Jaggamguda,Jama I Osmania,Jillellaguda,Karwan Sahu,Kachivani Singaram,Kattedan Ie So,Keesara,Keesaragutta,Keshogiri SO,Khairatabad HO,Kingsway,Kismatpur,Kolthur,Korremal,Kulsumpura,Kyasaram,Lalgadi Malakpet,Mehdipatnam,Old City,Pratap Singaram,Qazipura,RC Imarat So,Rahmath Nagar,Rail Nilayam,Raj Bhavan,Rajbolaram,Ag College,AG Office,A.Gs Staff Quarters,Amber Nagar,Anand Nagar,Ananthagiri,Andhra Mahila Sabha,Aperl,APHB Colony Moulali,Atvelli,Badangpet,Begumpet,Begumpet Police Lines,Bharath Nagar Colony,Boduppal,Bogaram,Central Police Lines,Chanchalguda Colony,Chandulal Baradari,CRP Camp,Cyberabad,Dargah Hussain Shah Wali,Darushifa,Dattatreya Colony,Dhoolpet,Fathenagar Colony,Gajularamaram,Gandhi Bhavan,Girmapur,Golconda Chowrastha,Yadgarpally,Vidhan Sabha,Vishali Nagar,Vaidehi Nagar,Thumkunta,Thimmaipally,Swaraj Nagar,Sardar Vallabhbhai Patel National Police Academy,Survey Of India,Suraram,Sultan Shahi,Kachiguda Station,State Bank Of Hyderabad,Sripuram Colony,Srinivasapuram,South Banjara Hills,Snehapuri Colony,Sitaphalmandi,Shyam Nagar,Turkapalliyadaram,Tagarikanaka,Ankireddypalli,Ankushapur,Annojiguda,Cherial,Vikarabad,Gowdavalli,Hanumanpet,Hassan Nagar,Himayat Nagar,GSI (SR) Bandlaguda,Abids,Amberpet,Dilsukhnagar,Sanjeeva Reddy Nagar,HUDA Residential Complex,Hindustan Cables Ltd,DK Road,High Court SO,LIC Division,Langer House,Malakpet Colony,Mamidipalli,Mangalhat,Mansoorabad,Moghalpura,Rampally,Nanakramguda,Osman Nagar,Padmarao Nagar,Padmavathi Nagar,Pahadi Shareef,Koti,Pirzadi Guda,Nuthankal,P AND T Colony S O,Old MLA Quarters,New MLA Quarters,NGRI,Rein Bazar,Saidabad Colony,Sanath Nagar Colony,Seetharampet,Santosh Nagar Colony,Sakkubai Nagar,Napier Lines,Osmania General Hospital,Hyderabad Airport Limited,Ramakrishna Math,Parishram Bhavan,Peddalaxmapur,Ram Koti,Rampallidiara,Rangareddy District Court,Ravalkole,Sahifa S O,Sanath Nagar IE,Hindi Bhawan";
-
-
-var trivandrumString="Thiruvananthapuram,Sasthamangalam,Vattiyoorkavu,Thirumala,Sreekariyam,Poojappura,Peyad,Peroorkada,Varkala,Vazhuthacaud,Kazhakootam,Mannanthala,Vattappara,Valiyavila,Vizhinjam,Kudappanakunnu";
-
-var thrissurString="Aloor,Amballur,Aranattukara,Athirappilly,Chelakkara,Chembuchira,Chermanangad,Cherpu,Chetuva,Elanad,Engandiyoor,Irinjalakuda,Kadalassery,Kochanoor,Kodakara,KODALY,Kodungallur,Kunnamkulam,Mala,Mupliyam,Mupliyam,Nadathara,Nandipulam,Nettissery,Pavaratty,Pazhayannur,Pazhuvil,Peramangalam,Poovathussery,Pudukkad,Puthenpeedika,Pulikkanny,Thalore,Triprayar,Urakam,valappad,Vatanappilly,Varandarappilly,Vellikulangara,Wadakkancheri,Vendore,Kadavallur,Perumpilavu,kaattakambal,kallur";
-
-var chennaiArray= chennaiString.split(',');
-var bengaluruArray= bengaluruString.split(',');
-var hyderabadArray= hyderabadString.split(',');
-var trivandrumArray= trivandrumString.split(',');
-var thrissurArray= thrissurString.split(',');
-
-
         	  $('[data-toggle="tooltip"]').tooltip({
         placement : 'bottom'
     });
@@ -292,47 +269,6 @@ $('.accomdationDiv').html(accomHtml);
   });
     
 
-$('#city').change(function(){
-$('#area').empty(); 
-if($(this).val()=="Chennai"){
-appendOptions(chennaiArray);
-
-}
-else if($(this).val()=="Bengaluru"){
-appendOptions(bengaluruArray);
-}
-
-else if($(this).val()=="Hyderabad"){
-appendOptions(hyderabadArray);
-}
-else if($(this).val()=="Trivandrum"){
-appendOptions(trivandrumArray);
-}
-
-else if($(this).val()=="Thrissur"){
-appendOptions(thrissurArray);
-}
-else{
-  $('#area').append('<option value="">Select an Area</option>');
-}
-});
-
-function appendOptions(areaArray){
- 
-$('#area').append('<option value="">Select an Area</option>');
-/*for(var i=0;i<areaArray.length;i++){
-$('#area').append('<option value='+areaArray[i]+'>'+areaArray[i]+'</option>');
-
-}*/
-
-$.each(areaArray, function (i, area) {
-    $('#area').append($('<option>', { 
-        value: area,
-        text : area 
-    }));
-});
-
-}
 
     $('#registrationForm').validator().on('submit', function (e) {
   if (e.isDefaultPrevented()) {
@@ -653,36 +589,36 @@ option{
         <h4 class="modal-title">FAQ's</h4>
       </div>
       <div class="modal-body">
-       <p>1. Is there any prerequisite learning to be met for enrolling myself in the Veda class</p>
-        <p>No previous learning is required. Don't skip the class, dedicate 4 hours in a week to learn, and practice atleast 1 hour a day at home. Doing Trikaala Sandhyavandanam daily is mandatory. Dedicated classes will be arranged for a.) Correcting the pronunciation b.) Learning/correcting the procedure.</p>
-        <p>2. Is the Veda class planned only on the weekends?</p>
-        <p>Yes, the current focus is to start weekend classes only (Saturday & Sundays), 4 hours a week - 8 classes a month (16 hours).</p>
-        <p>3. Is the weekend Veda class planned only in Chennai ?</p>
-        <p>Though GKVS Batch 1 focused on Chennai City, due to overwhelming response we are happy to extend it to other major cities across India.</p>
-        <p>4. How and when the location of the classes finalized?</p>
-        <p>Multiple areas will be grouped to make a single batch. Illustration - In Chennai, East & West Tambaram,Selaiyur, Camp Road can be considered as a single batch, Pallavaram,Chrompet can be considered other batch. The final grouping depends on the number of respondents from each area/city.The above is only for illustration purpose. Further communication in this regard will be shared via email / hand phone.</p>
-           <p>5. Is there a standard syllabus for the classes?</p>
-           <p>Yes, The Syllabus is centralized and standardized for all the batches. The students will be trained on the following for the next 12 to 14 months. Sandhya Vandanam, Madhyanikam, Sayam Sandhya Vandanam, Samitha Dhanam, Brahma Yagnam, Purusha Sooktham, Sree Sooktham, Manthra Pushpam, Gayathiri Manthram on various devata, Narayana Sooktham, Durga Sooktham, Bhoo Sooktham, Neela Sooktham, Nithya Pooja Mantras, Pancha Shanti Mantras, Sree Rudram, Chamakam, Seekshavalli (Thaitthiriya Upanishad), Anandavalli, Brahuvalli(Thaitthirirya Upanishad), Mahanyasa Anuvakaas, Stories from Vedas and Puranas, Anushtana Niyamam, Vedic way of life and its benefits, how to harmonize nithya karma anushtaanam in modern world, do's and dont's along with its rationale etc.</p>
+       <p>1. What is the essence of this workshop? When and how long is it?</p>
+        <p>Our aim is to blend fun with learning and to enlighten the audience about the greatness of our country.</p>
+      	<p>2. Who are the speakers?</p>
+        <p>Eminent speakers who are experts in their subject matter will share their knowledge enriched with experience connecting it to the Generation next.</p>
+        <p>3. Who can Attend?</p>
+        <p>This is for  girls/ladies aged between 8yrs to 60yrs respecting the traditional and dharmic way of life and are keen to know the answers for many of their questions. However they will be properly segregated based on age so that a homogeneous group is formed.</p>
+        <p>4. What are the eligibility criteria?</p>
+        <p>There is no prerequisite as such but for the open mind to learn and the urge to continue the learning and apply them in day today life.</p>
+           <p>5. What is the venue and Does it Include boarding and lodging?</p>
+           <p>Venue:  SRDF Vivekananda Vidhyalaya , Chrompet. It has good ventilation. Separate halls for different age groups. Sufficient bathroom/rest room facilities and ample open space for group activity and games. It is located in the residential area with fully secured gate. In addition to that security people will be deployed to ensure safe and peaceful stay. Simple and hygienic vegetarian food will be provided for entire two days.</p>
            
-           <p>6. Does the syllabus branch out to the specific Veda ( Rig, Yajur, Sama)</p>
-           <p>Yes, that is the plan. Upon completing the preparatory studies and its comfortable implementation by the vidhyarthis as a nithya karma, they will be initiated to their svasaakha paatam. That is, their respective Vedas.</p>
-           <p>7. Is there a Dakshina for the Vadhyar?</p>
-           <p>There will be minimum monthly amount of  Vadhyar Dakshina for the classes. We shall communicate the exact Dakshina via email / hand phone. Please note, even if you skip a few classes due to unavoidable reasons, requesting you to pay the dakshina which will be very nominal..</p>
-           <p>8. Is the venue for each batch finalized?</p>
-           <p>No. Venue can be decided only after the registration is over. We will communicate the venue via email / hand phone. On a general note, the class will be conducted in one or more Grhaas,Hosting by rotation is also welcome.. Those who wish to share their homes for this cause are requested to drop in a mail to us (vedavyasar12@gmail.com).</p>
-           <p>9. Is there a point of contact (POCs) for each area?</p>
-           <p>Yes, we will publish the point of contact for each area. The points of contact will facilitate the smooth functioning of the classes. POCs can be rotated based on the individual's interest in taking additional responsibilities.</p>
-            <p>10. Is there any books prescribed for the class?</p>
-            <p>Yes, we shall follow uniform book as prescribed by the authentic source. The publisher, name of the book and cost  will be communicatedat appropriate time via email / hand phone.However it is advised to learn Vedas by hearing and reciting it repeatedly(tiruvai).</p>
-            <p>11. Can I request for change in Syllabus?</p>
-            <p>No, the syllabus for the entire course is fixed by a group of competent Vaidhikaas. We need to just follow Vaadhyar instructions and keep learning.</p>
-            <p>12. Is there a plan to start new batch after the initial batch?</p>
-            <p>Yes, This is GKVS batch 2 and it will be a continuous process. New batches can be added, however it depends on the number of persons who would like to enroll in each area. We may need a minimum of 6 to 10 dedicated persons to start a new batch.</p>
-            <p>13. Is the class available via Skype or other modes of online learning?</p>
-            <p>Vedas are best learnt through a Guru, in person. There are no plans to take this online.</p>
-            <p>14. Is there a dress code to be followed?</p>
-            <p>Yes. Grhastaas should come in Panchakacham and Brahmacharis in Veshti.</p>
-
+           <p>6. Whether transportation will be provided?</p>
+           <p>Participants should arrange for their transport. However planning to create a whats app group area wise based on the registration where a volunteer shall guide you through.</p>
+           <p>7.Is it compulsory to stay back at venue or can I go and come back?</p>
+           <p>Night stay facilities are available. However, if one wishes to go home after the day1 event (which may go upto 7.30 p.m )shall report on the next day 10 minutes before the scheduled time.</p>
+           <p>8.What are the post workshop plans?</p>
+           <p>In order to keep the spirit high and to continue the knowledge gain we are planning to have a weekend online classes followed by monthly once meeting where most of the workshop topics will be dealt in detail. A complete syllabus for 15 months will be shared later.</p>
+          
+            <p>9.Is there any dress code</p>
+            <p>Yes. Being peak summer, cotton casual wear with dhuppatta/stole shall be the comfortable one. Since we have an exercise session on both days we recommend a cotton kurta pyjama for that. </p>
+            <p>10.Is it open to Chennai Alone?</p>
+            <p>All are welcome across the country who has got the flair to introspect, reflect and wish to be a change agent.</p>
+            <p>11.What all we need to bring?</p>
+            <p>Upon registration you will be provided with the link along with the confirmation mail, which gives you all the necessary input.</p>
+            <p>12.Is there any fee?</p>
+            <p>A nominal fee of Rs.500 per person including the boarding and lodging.</p>
+            <p>13. How and to whom can I pay my registration fees?</p>
+            <p>Upon registration the organizer will call you in person  to confirm your details and also give you the details regarding the mode of payment.</p>
+           <p> 14.I have a boy can I bring him?</p>
+           <p>Yes if he is less than 8 years with a minimal charge of 200.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
@@ -694,11 +630,11 @@ option{
 	<div class="col-sm-12">
 	
 	<div class="col-sm-12 " style="background:#EFD097; color:maroon;padding:1%">
-	<div class="col-xs-12 ">
-				<img src="https://i.ytimg.com/vi/VJzRPyu5eq0/hqdefault.jpg" class="img-responsive"style="height:60px;margin:0 auto;">
+	<div class="col-md-4 col-md-offset-5 col-sm-4 col-sm-offset-5 col-xs-4 col-xs-offset-5">
+				<img src="https://i.ytimg.com/vi/VJzRPyu5eq0/hqdefault.jpg"style="height:60px">
 	</div>
-<label class="col-xs-12 text-center" style="font-size: 25px;  ">Guru Krpaa Veda Sibhiram</label>
-			<label class="col-xs-12" style="font-size: 20px; ">It is never too late....</label>
+
+			<label class="col-sm-12" style="font-size: 30px; ">Tattva Bodha 16 month online course registration.</label>
 			<div class="col-sm-12">
 			<div class="row">
 				<div class="col-sm-12">
@@ -706,19 +642,37 @@ option{
 				</div>
 			</div>
 			<p style="font-size: 16px;">
-				The Vedas are the roots of our Hindu Culture & Tradition. They are the fountain head of our civilization and life values. There are quite a few amongst us who bemoan their ignorance of the Vedas and also their own failure early in life to evince interest in the Vedic studies. They also feel an urge to do something about it. This is a common regret even among the devout, but that itself is a healthy sign of Spiritual development.
-</p>
-<p style="font-size: 16px;">
-GKVS have, therefore, chalked out a project to full fill the ambition of such people - working men, the elderly, and students, and initiate them into the Vedic discipline. The course is specially being tailored to suit the needs of the new aspirants. Those who are seriously interested in the pursuit of Vedic knowledge can enroll themselves in this course. Please fill up the registration form, and we shall get back to you soon. Kindly refer to the Frequently Asked Questions (FAQ) section to get your doubts clarified. It is never too late to learn values.
+				From ancient times, Hinduism has bestowed upon women a social status of dignity and honor. Women in Sanathana Dharma had additional responsibility in understanding Vaideeka Dharma & cascading the knowledge to the subsequent generations.  In the last several years, our country has undergone significant changes in its social and economic environments.  These changes have altered our traditional family structure, learning and also the role of women within the family and society.  
+
+Our community was quick to adopt & adapt to the changing environment.  While embracing the new opportunities, our modern day women should not lose sight of their roots. They have to learn the nuances of balancing traditions and modern day lifestyle.  It is our endeavor, therefore to provide you with an opportunity to be aware of the sublime values of life, tradition and culture as sanctioned by our Vedas and Scriptures.  
+
+We are starting this journey with weekly online class, and once in a month meet-up in your respective area. 
+
+This online class will be a turning point in your life. This will change your perception and the way you think. It will make you become a responsible leader, a change agent, become duty bound while handling the rights responsibly.  
+
+A woman enlightened, Enlightens the whole generation.  Come, Join, Enrich and Enjoy.
 			</p>
 				
-     <!--  <label class="col-sm-12" style="font-size: 42px; "></label> -->
-      
-      <p style="font-size: 14px; font-weight:bold" >
+      <!--<p style="font-size: 14px; font-weight:bold" >
   
-       Last date for registrtion - <span class="blink_me"> 30th September 2016.</span> Tentative class start date - <span class="blink_me">October 29th, 30th 2016.</span> 
+       Workshop Dates - <span class="blink_me">May 28 th & 29th 2016. (Sat  8 am to 7 30 pm & Sun 6 30 am to 6 pm)</span> 
       </p>
-      
+       <p style="font-size: 14px; font-weight:bold" >
+  
+       Venue - <span >SRDF Vivekananda Vidyalaya, No.1, Mahadevan Street, Nehru Nagar, Chrompet, Chennai -600 044 </span> 
+      </p>-->
+
+	<!-- 	<label class="col-sm-12" style="font-size: 42px; "></label>
+			<p style="font-size: 14px; font-weight:bold;text-decoration:underline">BATCH I</p>
+			<p style="font-size: 14px; font-weight:bold" >
+	
+			 Last date for registrtion - <span class="blink_me"> 25th July 2015.</span> Tentative class start date - <span class="blink_me">July 25th , 26 th 2015.</span> 
+			</p>
+			<p style="font-size: 14px; font-weight:bold;text-decoration:underline">BATCH II</p>
+			<p style="font-size: 14px; font-weight:bold" >
+	
+			 Registration commences on - <span class="blink_me"> 28 th July2015.</span> Tentatively class start on - <span class="blink_me">November.</span> 
+			</p> --> 
 		<div class="row">
 			<label class="col-sm-12 col-md-12">If you face any technical issues during registration contact the following numbers for manual registeration </label>
 			</div>
@@ -728,8 +682,8 @@ GKVS have, therefore, chalked out a project to full fill the ambition of such pe
 			</div>
 			
 			<div class="row">
-			<label class="col-sm-12 col-md-12">If you have any queries kindly write to - vedavyasar12@gmail.com</label>
-		 <label class="col-sm-12 col-md-12">Follow us on our Facebook page <a href="https://www.facebook.com/VedaVyasar-1437227356579511/" target="_blank" style="text-decoration: underline;" title="Click on the link to go to our faceboook page.">VedaVyasar</a></label>  
+			<label class="col-sm-12 col-md-12">If you have any queries kindly write to - tatvabodhaa@gmail.com</label>
+		 <label class="col-sm-12 col-md-12">Follow us on our Facebook page <a href="https://www.facebook.com/Tattva-Bodhah-235125920166382/" target="_blank" style="text-decoration: underline;" title="Click on the link to go to our faceboook page.">Tattva Bodhah</a></label>  
 			
 			</div>
 			
@@ -793,12 +747,16 @@ GKVS have, therefore, chalked out a project to full fill the ambition of such pe
     <label class="control-label col-sm-3" for="mobNo">Primary Mobile No: / Landline <sub>*</sub></label>
     <div class="col-sm-4"> 
       <input type="tel" class="form-control" id="mobNo"  maxlength= "10" placeholder="Enter Mobile / Landline Number"  pattern="^(\d{8})(\d{2})?$"  data-error="Please enter a valid mobile / landline Number" required>
- <p style="font-weight:bold">Note: Enter Landline only if you dont have Mobile Number.</p>
     </div>
-     
      <div class="help-block with-errors" ></div>
   </div>
- 
+<!--   <div class="form-group">
+    <label class="control-label col-sm-3" for="mobNo">Secondary Mobile No: / Landline <sub>*</sub></label>
+    <div class="col-sm-4"> 
+      <input type="tel" class="form-control" id="secMobNo"  maxlength= "10" placeholder="Enter Mobile / Landline Number"  pattern="^(\d{8})(\d{2})?$"  data-error="Please enter a valid mobile / landline Number" required>
+    </div>
+     <div class="help-block with-errors" ></div>
+  </div> -->
   <div class="form-group">
     <label class="control-label col-sm-3" for="mobNo">Do you use WhatsApp:<sub>*</sub></label>
     <div class="col-sm-1 radio"> 
@@ -809,30 +767,168 @@ GKVS have, therefore, chalked out a project to full fill the ambition of such pe
     </div>
      <div class="help-block with-errors" ></div>
   </div>
-
-<div class="form-group cityDiv">
-    <label class="control-label col-sm-3" for="city" id="cityLbl"> City: <sub>*</sub></label>
-    <div class="col-sm-4"> 
-<select id="city" class="form-control"   data-error="Please select a city" required>
-<option value="">Select a City</option>
-<option value="Chennai">Chennai</option>
- <option value="Bengaluru">Bengaluru</option>
- <option value="Hyderabad">Hyderabad</option>
- <option value="Trivandrum">Trivandrum</option>
- <option value="Thrissur">Thrissur</option>
-</select>
-
-    </div>
-     <div class="help-block with-errors" ></div>
-  </div>
-
-
-
  <div class="form-group  areaDiv">
     <label class="control-label col-sm-3" for="area" id="areaLbl"> Area: <sub>*</sub></label>
     <div class="col-sm-4"> 
       <select id="area" class="form-control"   data-error="Please select a area" required>
-      <option value="">Select an Area</option>
+        <option value="">Select an Area</option>
+        <option value="Adambakkam">Adambakkam</option>
+ <option value="Adyar">Adyar</option>
+ <option value="Alandur">Alandur</option>
+ <option value="Alwarpet">Alwarpet</option>
+ <option value="Alwarthirunagar">Alwarthirunagar</option>
+ <option value="Ambattur">Ambattur</option>
+ <option value="Aminjikarai">Aminjikarai</option>
+ <option value="Anakaputhur">Anakaputhur</option>
+ <option value="Anna Nagar">Anna Nagar</option>
+ <option value="Annanur">Annanur</option>
+ <option value="Arumbakkam">Arumbakkam</option>
+ <option value="Ashok Nagar">Ashok Nagar</option>
+ <option value="Avadi">Avadi</option>
+ <option value="Ayanavaram">Ayanavaram</option>
+ <option value="Besant Nagar">Besant Nagar</option>
+ <option value="Basin Bridge">Basin Bridge</option>
+ <option value="Chepauk">Chepauk</option>
+ <option value="Chetput">Chetput</option>
+ <option value="Chintadripet">Chintadripet</option>
+ <option value="Chitlapakkam">Chitlapakkam</option>
+ <option value="Choolai">Choolai</option>
+ <option value="Choolaimedu">Choolaimedu</option>
+ <option value="Chrompet">Chrompet</option>
+ <option value="Egmore">Egmore</option>
+ <option value="Ekkaduthangal">Ekkaduthangal</option>
+ <option value="Ennore">Ennore</option>
+ <option value="Foreshore Estate">Foreshore Estate</option>
+ <option value="Fort St. George">Fort St. George</option>
+ <option value="George Town">George Town</option>
+ <option value="Gopalapuram">Gopalapuram</option>
+ <option value="Government Estate">Government Estate</option>
+ <option value="Guindy">Guindy</option>
+ <option value="Guduvanchery">Guduvanchery</option>
+ <option value="IIT Madras">IIT Madras</option>
+ <option value="Injambakkam">Injambakkam</option>
+ <option value="ICF">ICF</option>
+ <option value="Iyyapanthangal">Iyyapanthangal</option>
+ <option value="Jafferkhanpet">Jafferkhanpet</option>
+ <option value="Karapakkam">Karapakkam</option>
+ <option value="Kattivakkam">Kattivakkam</option>
+ <option value="Kazhipattur">Kazhipattur</option>
+ <option value="K.K. Nagar">K.K. Nagar</option>
+ <option value="Keelkattalai">Keelkattalai</option>
+ <option value="Kelambakkam">Kelambakkam</option>
+ <option value="Kilpauk">Kilpauk</option>
+ <option value="Kodambakkam">Kodambakkam</option>
+ <option value="Kodungaiyur">Kodungaiyur</option>
+ <option value="Kolathur">Kolathur</option>
+ <option value="Korattur">Korattur</option>
+ <option value="Korukkupet">Korukkupet</option>
+ <option value="Kottivakkam">Kottivakkam</option>
+ <option value="Kotturpuram">Kotturpuram</option>
+ <option value="Kovalam">Kovalam</option>
+ <option value="Kovilambakkam">Kovilambakkam</option>
+ <option value="Koyambedu">Koyambedu</option>
+ <option value="Kundrathur">Kundrathur</option>
+ <option value="Okkiyum Thoraipakkam">Okkiyum Thoraipakkam</option>
+ <option value="Madhavaram">Madhavaram</option>
+ <option value="Madhavaram Milk Colony">Madhavaram Milk Colony</option>
+ <option value="Madipakkam">Madipakkam</option>
+ <option value="Madambakkam">Madambakkam</option>
+ <option value="Maduravoyal">Maduravoyal</option>
+ <option value="Manali">Manali</option>
+ <option value="Manali New Town">Manali New Town</option>
+ <option value="Manapakkam">Manapakkam</option>
+ <option value="Mandaveli">Mandaveli</option>
+ <option value="Mangadu">Mangadu</option>
+ <option value="Mannadi">Mannadi</option>
+ <option value="Mathur">Mathur</option>
+ <option value="Medavakkam">Medavakkam</option>
+ <option value="Meenambakkam">Meenambakkam</option>
+ <option value="Minjur">Minjur</option>
+ <option value="Mogappair">Mogappair</option>
+ <option value="MKB Nagar">MKB Nagar</option>
+ <option value="Mount Road">Mount Road</option>
+ <option value="Moolakadai">Moolakadai</option>
+ <option value="Moulivakkam">Moulivakkam</option>
+ <option value="Mugalivakkam">Mugalivakkam</option>
+ <option value="Mylapore">Mylapore</option>
+ <option value="Nandanam">Nandanam</option>
+ <option value="Nanganallur">Nanganallur</option>
+ <option value="Navalur">Navalur</option>
+ <option value="Neelankarai">Neelankarai</option>
+ <option value="Nemilichery">Nemilichery</option>
+ <option value="Nesapakkam">Nesapakkam</option>
+ <option value="Nolambur">Nolambur</option>
+ <option value="Noombal">Noombal</option>
+ <option value="Nungambakkam">Nungambakkam</option>
+ <option value="Padi">Padi</option>
+ <option value="Pakkam">Pakkam</option>
+ <option value="Palavakkam">Palavakkam</option>
+ <option value="Pallavaram">Pallavaram</option>
+ <option value="Pallikaranai">Pallikaranai</option>
+ <option value="Pammal">Pammal</option>
+ <option value="Park Town">Park Town</option>
+ <option value="Parry's Corner">Parry's Corner</option>
+ <option value="Pattabiram">Pattabiram</option>
+ <option value="Pattaravakkam">Pattaravakkam</option>
+ <option value="Pazhavanthangal">Pazhavanthangal</option>
+ <option value="Peerkankaranai">Peerkankaranai</option>
+ <option value="Perambur">Perambur</option>
+ <option value="Peravallur">Peravallur</option>
+ <option value="Perumbakkam">Perumbakkam</option>
+ <option value="Perungalathur">Perungalathur</option>
+ <option value="Perungudi">Perungudi</option>
+ <option value="Pozhichalur">Pozhichalur</option>
+ <option value="Poonamallee">Poonamallee</option>
+ <option value="Porur">Porur</option>
+ <option value="Pudupet">Pudupet</option>
+ <option value="Purasaiwalkam">Purasaiwalkam</option>
+ <option value="Puthagaram">Puthagaram</option>
+ <option value="Puzhal">Puzhal</option>
+ <option value="Puzhuthivakkam">Puzhuthivakkam</option>
+ <option value="Raj Bhavan">Raj Bhavan</option>
+ <option value="Ramavaram">Ramavaram</option>
+ <option value="Red Hills">Red Hills</option>
+ <option value="Royapettah">Royapettah</option>
+ <option value="Royapuram">Royapuram</option>
+ <option value="Saidapet">Saidapet</option>
+ <option value="Saligramam">Saligramam</option>
+ <option value="Santhome">Santhome</option>
+ <option value="Selaiyur">Selaiyur</option>
+ <option value="Shenoy Nagar">Shenoy Nagar</option>
+ <option value="Sholavaram">Sholavaram</option>
+ <option value="Sholinganallur">Sholinganallur</option>
+ <option value="Siruseri">Siruseri</option>
+ <option value="Sithalapakkam">Sithalapakkam</option>
+ <option value="Sowcarpet">Sowcarpet</option>
+ <option value="St.Thomas Mount">St.Thomas Mount</option>
+ <option value="Tambaram">Tambaram</option>
+ <option value="Teynampet">Teynampet</option>x
+ <option value="Tharamani">Tharamani</option>
+ <option value="T. Nagar">T. Nagar</option>
+ <option value="Thirumangalam">Thirumangalam</option>
+ <option value="Thirumullaivoyal">Thirumullaivoyal</option>
+ <option value="Thiruneermalai">Thiruneermalai</option>
+ <option value="Thiruninravur">Thiruninravur</option>
+ <option value="Thiruvanmiyur">Thiruvanmiyur</option>
+ <option value="Tiruverkadu">Tiruverkadu</option>
+ <option value="Thiruvotriyur">Thiruvotriyur</option>
+ <option value="Tirusulam">Tirusulam</option>
+ <option value="Tiruvallikeni">Tiruvallikeni</option>
+ <option value="Tondiarpet">Tondiarpet</option>
+ <option value="United India Colony">United India Colony</option>
+ <option value="Urapakkam">Urapakkam</option>
+ <option value="Vandalur">Vandalur</option>
+ <option value="Vadapalani">Vadapalani</option>
+ <option value="Valasaravakkam">Valasaravakkam</option>
+ <option value="Vallalar Nagar">Vallalar Nagar</option>
+ <option value="Vanagaram">Vanagaram</option>
+ <option value="Velachery">Velachery</option>
+ <option value="Veppampattu">Veppampattu</option>
+ <option value="Villivakkam">Villivakkam</option>
+ <option value="Virugambakkam">Virugambakkam</option>
+ <option value="Vyasarpadi">Vyasarpadi</option>
+ <option value="Washermanpet">Washermanpet</option>
+ <option value="West Mambalam">West Mambalam</option>
        </select>
      </div>
  <div class="help-block with-errors" style="display:none"></div> 
@@ -1178,9 +1274,9 @@ GKVS have, therefore, chalked out a project to full fill the ambition of such pe
      <div class=" col-sm-2 col-md-2 col-xs-4">
       <input type="button" class="btn btn-primary form-control" onclick="resetForm()" value="Reset">
     </div>
-    <div class=" col-sm-2 col-md-2 col-xs-4 ">
+   <!-- <div class=" col-sm-2 col-md-2 col-xs-4 displayNone">
       <input type="button" class="btn btn-primary form-control" data-backdrop="static" data-keyboard="false" data-toggle="modal" href="#faqModel" value="FAQ's">
-    </div>
+    </div>-->
     <div class="col-sm-offset-4 col-sm-2 col-md-1 displayNone">
       <a  class="btn btn-primary"  id="modalBtn" data-toggle="modal" href="#myModal" data-backdrop="static" data-keyboard="false">modalBtn</a>
     </div>
